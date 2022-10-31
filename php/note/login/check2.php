@@ -32,8 +32,15 @@ foreach($users as $user){
 // if($acc==$formAcc && $pw==$formPw){
 if($chk){
     $_SESSION['login']=$formAcc;
+    //自動重載
+    $times=$_COOKIE['times']+1;
+    setcookie('times',$times,time()+(60*60*24*365));
 }else{
-    $_SESSION['error']="帳號或密碼錯誤";
+    $error="帳號或密碼錯誤";
+}
+
+if (isset($error)) {
+    header("location:login2.php")
 }
 
 header("location:login2.php");

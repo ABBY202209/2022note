@@ -1,3 +1,12 @@
+<?php
+if (!isset($_COOKIE['times'])) {//如果沒有times就加上去
+    setcookie('times',1,time()+(60*60*24*365));//並且再加一年
+}else{
+    $times=
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
