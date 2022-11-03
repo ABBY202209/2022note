@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap css link 載入 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- js 啟用 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .box {
+            /* height: 300px; */
+            /* 使用者螢幕高度單位 相對 */
+            height: 30vh;
+        }
+
+        #f1 {
+            background-color: lightblue;
+        }
+
+        #f2 {
+            background-color: lightpink;
+        }
+
+        #f3 {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm bg-light fixed-top">
+        <!-- fixed-top 讓navbar固定在上面 -->
+        <div class="container-fluid">
+            <!-- container 下加 navbar-nav -->
+            <a class="navbar-brand" href="#">
+                <!-- <img src="https://picsum.photos/id/1068/200/300" alt="" style="width:50px"> -->
+                <i class="fa-brands fa-twitter"></i>
+                &nbsp;&nbsp;logo
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#f1">Link 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#f2">Link 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#f3">Link 3</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <!-- top -->
+    <div class="container-fluid mt-5" >
+        <h3>Basic Navbar Example</h3>
+        <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
+        <p>The navbar-expand-xxl|xl|lg|md|sm class determines when the navbar should stack vertically (on xxlarge, extra
+            large, large, medium or small screens).</p>
+    </div>
+    <!-- container1 -->
+    <div class="container-fluid mt-3 box" id="f1">
+        <div class="col-6">
+
+            <div class="card" style="width: 100%;">
+                <img src="https://picsum.photos/id/110/50/20" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p c-lass="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the card's content.</p>
+                    <a href="" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- container2 -->
+    <div class="container-fluid mt-3 box" id="f2">
+        <div class="col-6 col-sm-6">
+            <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Accordion Item #1
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>This is the first item's accordion body.</strong> It is shown by default, until the
+                        collapse plugin adds the appropriate classes that we use to style each element. These classes
+                        control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+                        modify any of this with custom CSS or overriding our default variables. It's also worth noting
+                        that just about any HTML can go within the <code>.accordion-body</code>, though the transition
+                        does limit overflow.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <div class="container-fluid mt-3 box" id="f3">
+
+    </div>
+
+    
+
+</body>
+
+</html>

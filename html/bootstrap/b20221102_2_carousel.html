@@ -7,6 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .box{
+            /* height: 500px; */
+            /* 使用者螢幕高度單位 相對 */
+            height: 80vh;
+        }
+        #f1{
+            background-color: lightblue;
+        }
+        #f2{
+            background-color: lightpink;
+        }
+        #f3{
+            background-color: lightgreen;
+        }
+    </style>
 </head>
 
 <body>
@@ -37,14 +53,14 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="https://picsum.photos/id/1002/500/200" alt="Los Angeles" class="d-block"
-                        style="width:100%;height: 200px;">
+                        style="width:100%;height: 500px;">
                     <div class="carousel-caption">
                         <h3>Los Angeles</h3>
                         <p>We had such a great time in LA!</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/id/1003/500/200" alt="Chicago" class="d-block"
+                    <img src="https://picsum.photos/id/1003/20/200" alt="Chicago" class="d-block"
                         style="width:100%;height: 200px;">
                     <div class="carousel-caption">
                         <h3>Chicago</h3>
@@ -60,7 +76,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="https://picsum.photos/id/1005/500/200" alt="New York" class="d-block"
+                    <img src="https://picsum.photos/id/1004/500/200" alt="New York" class="d-block"
                         style="width:100%;height: 50px;">
                     <div class="carousel-caption">
                         <h3>New York</h3>
@@ -157,7 +173,72 @@
             <h3>Carousel Example</h3>
             <p>The following example shows how to create a basic carousel with indicators and controls.</p>
         </div>
+
+        <div class="container-fluid mt-3 box" id="f1">
+            <div class="col-6">
+    
+                <div class="card" style="width: 20rem;">
+                    <img src="https://picsum.photos/id/110/100/100" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p c-lass="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>             
+            </div>
+        </div>
+        <div class="container-fluid mt-3 box" id="f2" >
+            <div class="col-6">
+    
+                <div class="card" style="width: 20rem;">
+                    <img src="https://picsum.photos/id/330/100/100" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p c-lass="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>             
+            </div> 
+        </div>
+        <div class="container-fluid mt-3 box" id="f3">
+            <div class="col-6">
+    
+                <div class="card" style="width: 20rem;">
+                    <img src="https://picsum.photos/id/440/100/100" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p c-lass="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <a href="" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>             
+            </div> 
+        </div>
     </div>
+    <nav class="navbar navbar-expand-sm bg-light fixed-top">
+        <!-- fixed-top 讓navbar固定在上面 -->
+        <div class="container-fluid">
+            <!-- container 下加 navbar-nav -->
+            <a class="navbar-brand" href="#">
+                <img src="https://picsum.photos/id/1068/200/300" alt="" style="width:50px">
+                <i class="fa-brands fa-twitter"></i>
+                &nbsp;&nbsp;logo
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#f1">Link 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#f2">Link 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#f3">Link 3</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 </body>
 
