@@ -92,9 +92,9 @@
   //m	数字表示的月份，有前导零   d 月份中的第几天，有前导零的
 
   //後面空白
-  for ($i=0; $i < ; $i++) { 
-    # code...
-  }
+  // for ($i=0; $i < ; $i++) { 
+  //   # code...
+  // }
 
   /* echo "<pre>";
 print_r($cal);
@@ -110,7 +110,7 @@ echo "</pre>"; */
 
   <div class="d-flex my-top">
     <a href="?y=2022&m=<?= $prevMonth; ?>">上一個月</a>
-    <h1><?= $year; ?> 年 <?= $month; ?> 月份</h1>
+    <h1 ><?= $year; ?> 年 <?= $month; ?> 月份</h1>
     <a href="?y=2022&m=<?= $nextMonth; ?>">下一個月</a>
   </div>
   <br>
