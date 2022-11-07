@@ -40,25 +40,26 @@
       margin-left: -1px;
       margin-top: -1px;
     }
-    
+
     .cal .date:hover {
       transform: scale(1.05);
       background-color: lightcyan;
     }
-    
+
     .holiday {
       background-color: pink;
     }
-    .week{
-    border: 1px solid #999;
+
+    .week {
+      border: 1px solid #999;
       width: calc(100% / 7);
       margin-left: -1px;
       margin-bottom: -1px;
       height: 40px;
       text-align: center;
-      
+
     }
-    </style>
+  </style>
 </head>
 
 <body>
@@ -69,26 +70,26 @@
   /*請在這裹撰寫你的萬年曆程式碼*/
   $cal = [];
   $holiday = ['2022-10-25' => "光復節", "2022-10-10" => "國慶日"]; // 增加特殊日期判斷
-  
+
   $month = (isset($_GET['m'])) ? $_GET['m'] : date("n"); //n	数字表示的月份，没有前导零
   $year = (isset($_GET['y'])) ? $_GET['y'] : date("Y"); //Y	4 位数字完整表示的年份
 
   // $nextMonth = $month + 1;
   // $prevMonth = $month - 1;
 
-  $nextYear=$year;
-    $nextMonth=$month+1;
-    if ($nextMonth==12) {
-        $nextMonth=1;
-        $nextYear=$year+1;
-    }
-    
-    $prevYear=$year;
-    $prevMonth=$month-1;
-    if ($prevMonth==1) {
-        $prevMonth=12;
-        $prevYear=$year-1;
-    }
+  $nextYear = $year;
+  $nextMonth = $month + 1;
+  if ($month == 12) {
+    $nextMonth = 1;
+    $nextYear = $year + 1;
+  }
+
+  $prevYear = $year;
+  $prevMonth = $month - 1;
+  if ($month == 1) {
+    $prevMonth = 12;
+    $prevYear = $year - 1;
+  }
 
 
   $firstDay = $year . "-" . $month . "-1"; //本月第一天
@@ -97,24 +98,24 @@
   $lastDay = $year . '-' . $month . '-' . $monthDays;
   $spaceDays = $firstDayWeek - 1;
   $weeks = ceil(($monthDays + $spaceDays) / 7);
-  $lastSpaceDays=$weeks*7-$monthDays-$spaceDays;
-  
+  $lastSpaceDays = $weeks * 7 - $monthDays - $spaceDays;
+  $today = date("Y-m-d");
 
- 
 
-  //echo 前面空白
+
+  //前面空白
   for ($i = 0; $i < $spaceDays; $i++) {
     $cal[] = '';
   }
-  //echo  當月日期
+  //當月天數
   for ($i = 0; $i < $monthDays; $i++) {
     $cal[] = date("Y-m-d", strtotime("+$i days", strtotime($firstDay)));
   }
   //m	数字表示的月份，有前导零   d 月份中的第几天，有前导零的
 
   // 後面空白
-  for ($i=0; $i < $lastSpaceDays ; $i++) { 
-    $cal[]='';
+  for ($i = 0; $i < $lastSpaceDays; $i++) {
+    $cal[] = '';
   }
 
   /* echo "<pre>";
@@ -126,36 +127,38 @@ echo "</pre>"; */
   echo "該月共" . $monthDays . "天,最後一天是" . $lastDay;
   echo "<br>";
   echo "月曆天數共" . ($monthDays + $spaceDays) . "天，" . $weeks . "周";
-
+  echo "<br>";
+  echo $today;
 
   ?>
 
 
-<!-- <div class="d-flex my-top">
+  <!-- <div class="d-flex my-top">
   <a href="?y=2022&m=<?= $prevMonth; ?>">上一個月</a>
   <h1 ><?= $year; ?> 年 <?= $month; ?> 月份</h1>
   <a href="?y=2022&m=<?= $nextMonth; ?>">下一個月</a>
 </div> -->
 
-<div class="d-flex my-top">
-  <a href="?y=<?= $prevYear?>&m=<?=$prevMonth; ?>">上一個月</a>
-  <h1 ><?= $year; ?> 年 <?= $month; ?> 月份</h1>
-  <a href="?y=<?= $nextYear?>&m=<?= $nextMonth; ?>">下一個月</a>
-</div>
+  <!-- header -->
+  <div class="d-flex my-top">
+    <a href="?y=<?= $prevYear ?>&m=<?= $prevMonth; ?>">上一個月</a>
+    <h1><?= $year; ?> 年 <?= $month; ?> 月份</h1>
+    <a href="?y=<?= $nextYear ?>&m=<?= $nextMonth; ?>">下一個月</a>
+  </div>
 
 
 
-<div class='cal'>
-  <?php
-  
-      $week=array("mon","tue","wed","thu","fri","sat","sun");
-       for ($i=0; $i < 7; $i++) { 
-        echo "<div class=' week mt-2  '>";
-        echo $week[$i];
-        echo "<div>&nbsp</div>";
-        echo "</div>";
-       }
-      
+  <div class='cal'>
+    <?php
+
+    $week = array("mon", "tue", "wed", "thu", "fri", "sat", "sun");
+    for ($i = 0; $i < 7; $i++) {
+      echo "<div class=' week mt-2  '>";
+      echo $week[$i];
+      echo "<div>&nbsp</div>";
+      echo "</div>";
+    }
+
 
     foreach ($cal as $i => $day) {
       if ($day != "") {
@@ -177,7 +180,15 @@ echo "</pre>"; */
         echo "<div>&nbsp</div>";
         echo "</div>";
       }
+
+      if ($day == $today) {
+        echo "<div class='date' style='background-color: lightcyan;'>" . substr($day, 8) . "</div>";
+      } else {
+        echo "<div class='date' >" . substr($day, 8) . "</div>";
+      }
     }
+
+
 
     ?>
   </div>
