@@ -71,7 +71,9 @@
   $cal = [];
   $holiday = ['2022-10-25' => "光復節", "2022-10-10" => "國慶日"]; // 增加特殊日期判斷
 
-  $month = (isset($_GET['m'])) ? $_GET['m'] : date("n"); //n	数字表示的月份，没有前导零
+  $month = (isset($_GET['m'])) ? $_GET['m'] : date("n"); 
+  // isset 參數arg的值非null，就回傳true，否則就回傳false
+  //n	数字表示的月份，没有前导零
   $year = (isset($_GET['y'])) ? $_GET['y'] : date("Y"); //Y	4 位数字完整表示的年份
 
   // $nextMonth = $month + 1;
@@ -161,28 +163,27 @@ echo "</pre>"; */
 
 
     foreach ($cal as $i => $day) {
-      if ($day != "") {
+      if ($day != "") {// !=  不等於
         $show = explode("-", $day)[2];
       } else {
         $show = "";
       }
-
       if (array_key_exists($day, $holiday)) {
-
+        
         echo "<div class='date holiday '>";
         echo $show;
         echo "<div>{$holiday[$day]}</div>";
         echo "</div>";
-      } else {
-
-        echo "<div class='date'>";
-        echo $show;
-        echo "<div>&nbsp</div>";
-        echo "</div>";
-      }
-
-      if ($day == $today) {
-        echo "<div class='date' style='background-color: lightcyan;'>" . substr($day, 8) . "</div>";
+        // } else {
+          // echo $show;
+          // echo "<div>&nbsp</div>";
+          // echo "</div>";
+          
+          //   echo "<div class='date'>";
+      // }
+    }
+    if ($day == $today) {
+      echo "<div class='date' style='background-color: lightcyan;'>" . substr($day, 8) . "</div>";
       } else {
         echo "<div class='date' >" . substr($day, 8) . "</div>";
       }
@@ -190,11 +191,12 @@ echo "</pre>"; */
 
 
 
+    
     ?>
   </div>
 
-
-
+  
+  
 </body>
 
-</html>
+</html>                                          
