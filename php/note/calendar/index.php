@@ -69,7 +69,27 @@
   <?php
   /*請在這裹撰寫你的萬年曆程式碼*/
   $cal = [];
-  $holiday = ['2022-10-25' => "光復節", "2022-10-10" => "國慶日"]; // 增加特殊日期判斷
+  $holiday = [
+    '01-01' => "元旦",
+    '02-28' => "和平紀念日",
+    '04-04' => "兒童節",
+    '05-01' => "勞動節",
+    '09-03' => "軍人節",
+    '10-10' => "雙十節",
+  ]; // 增加特殊日期判斷
+  $festival=[
+    '03-08' => "婦女節",
+    '03-12' => "國父逝世紀念日",
+    '03-14' => "反侵略日",
+    '03-29' => "青年節",
+    '07-15' => "解嚴紀念日",
+    '09-28' => "教師節",
+    '10-24' => "聯合國日",
+    '10-25' => "光復節",
+    '11-12' => "國父誕辰紀念日",
+    '12-25' => "行憲紀念日",
+    
+  ];
 
   $month = (isset($_GET['m'])) ? $_GET['m'] : date("n");
   // isset 參數arg的值非null，就回傳true，否則就回傳false
@@ -101,7 +121,7 @@
   $spaceDays = $firstDayWeek - 1;
   $weeks = ceil(($monthDays + $spaceDays) / 7);
   $lastSpaceDays = $weeks * 7 - $monthDays - $spaceDays;
-  $today = date("Y-m-d");
+  $today = date("m-d");
 
 
 
@@ -111,7 +131,8 @@
   }
   //當月天數
   for ($i = 0; $i < $monthDays; $i++) {
-    $cal[] = date("Y-m-d", strtotime("+$i days", strtotime($firstDay)));
+    // $cal[] = date("Y-m-d", strtotime("+$i days", strtotime($firstDay)));
+    $cal[] = date("m-d", strtotime("+$i days", strtotime($firstDay)));
   }
   //m	数字表示的月份，有前导零   d 月份中的第几天，有前导零的
 
@@ -131,6 +152,7 @@ echo "</pre>"; */
   echo "月曆天數共" . ($monthDays + $spaceDays) . "天，" . $weeks . "周";
   echo "<br>";
   echo $today;
+
 
   ?>
 
@@ -153,7 +175,7 @@ echo "</pre>"; */
   <div class='cal'>
     <?php
 
-    $week = array("mon", "tue", "wed", "thu", "fri", "sat", "sun");
+    $week = array("mon.", "tue.", "wed.", "thu.", "fri.", "sat.", "sun.");
     for ($i = 0; $i < 7; $i++) {
       echo "<div class=' week mt-2  '>";
       echo $week[$i];
@@ -164,7 +186,7 @@ echo "</pre>"; */
 
     foreach ($cal as $i => $day) {
       if ($day != "") { // !=  不等於
-        $show = explode("-", $day)[2];
+        $show = explode("-", $day)[1];
       } else {
         $show = "";
       }
@@ -182,9 +204,9 @@ echo "</pre>"; */
         //   echo "<div class='date'>";
         // }
       } else if ($day == $today) {
-        echo "<div class='date' style='background-color: lightcyan;'>" . substr($day, 8) . "</div>";
+        echo "<div class='date' style='background-color: lightcyan;'>" . substr($day, 3) . "</div>";
       } else {
-        echo "<div class='date' >" . substr($day, 8) . "</div>";
+        echo "<div class='date' >" . substr($day, 3) . "</div>";
       }
     }
 
