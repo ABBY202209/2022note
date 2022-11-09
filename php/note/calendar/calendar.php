@@ -37,6 +37,7 @@
     .cal .date {
       border: 1px solid #999;
       width: calc(100% / 7);
+      /* height: calc((100% - 40px )/ 6); */
       margin-left: -1px;
       margin-top: -1px;
     }
@@ -77,7 +78,7 @@
     '09-03' => "軍人節",
     '10-10' => "雙十節",
   ]; // 增加特殊日期判斷
-  $festival=[
+  $festival = [
     '03-08' => "婦女節",
     '03-12' => "國父逝世紀念日",
     '03-14' => "反侵略日",
@@ -88,7 +89,7 @@
     '10-25' => "光復節",
     '11-12' => "國父誕辰紀念日",
     '12-25' => "行憲紀念日",
-    
+
   ];
 
   $month = (isset($_GET['m'])) ? $_GET['m'] : date("m");
@@ -121,7 +122,7 @@
   $spaceDays = $firstDayWeek - 1;
   $weeks = ceil(($monthDays + $spaceDays) / 7);
   $lastSpaceDays = $weeks * 7 - $monthDays - $spaceDays;
-  $today = date("m-d");
+  $today = date("Y-m-d-N");
 
 
 
@@ -132,7 +133,7 @@
   //當月天數
   for ($i = 0; $i < $monthDays; $i++) {
     // $cal[] = date("Y-m-d", strtotime("+$i days", strtotime($firstDay)));
-    $cal[] = date("m-d", strtotime("+$i days", strtotime($firstDay)));
+    $cal[] = date("Y-m-d-N", strtotime("+$i days", strtotime($firstDay)));
   }
   //m	数字表示的月份，有前导零   d 月份中的第几天，有前导零的
 
@@ -174,10 +175,10 @@ echo "</pre>"; */
 
   <div class='cal'>
     <?php
-
+    
     $week = array("mon.", "tue.", "wed.", "thu.", "fri.", "sat.", "sun.");
     for ($i = 0; $i < 7; $i++) {
-      echo "<div class=' week mt-2  '>";
+      echo "<div class=' date'>";
       echo $week[$i];
       echo "<div>&nbsp</div>";
       echo "</div>";
@@ -186,29 +187,65 @@ echo "</pre>"; */
 
     foreach ($cal as $i => $day) {
       if ($day != "") { // !=  不等於
-        $show = explode("-", $day)[1];
+        $show = explode("-", $day)[2];
       } else {
         $show = "";
       }
-      if (array_key_exists($day, $holiday)) {
+      
+      if (substr($day, -1) == 6 || substr($day, -1) == 7) {
 
-        echo "<div class='date holiday '>";
+        echo "<div class='date holiday'";
+        if ($day == $today) {
+        
+          echo "style"."='background-color: lightcyan'";
+        }
+        echo ">";
         echo $show;
-        echo "<div>{$holiday[$day]}</div>";
-        echo "</div>";
-        // } else {
-        // echo $show;
-        // echo "<div>&nbsp</div>";
-        // echo "</div>";
+        
 
-        //   echo "<div class='date'>";
-        // }
-      } else if ($day == $today) {
-        echo "<div class='date' style='background-color: lightcyan;'>" . substr($day, 3) . "</div>";
+        if (array_key_exists(substr($day, -7,-2), $holiday)) {
+        // if (array_key_exists("10-10", $holiday)) {
+          echo "<div>{$holiday[substr($day, -7,-2)]}</div>";
+        } else {
+          echo "<div>&nbsp</div>";
+        }
+
+
+        echo "</div>";
+      }
+
+
+      // } else {
+      // echo $show;
+      // echo "<div>&nbsp</div>";
+      // echo "</div>";
+
+      //   echo "<div class='date'>";
+      // }
+      else if (substr($day, -1) >= 1 && substr($day, -1) <= 5) {
+
+        echo "<div class='date'";
+        if ($day == $today) {
+          echo "style" . "='background-color: lightcyan'";
+        }
+        echo ">";
+        echo $show;
+
+        if (array_key_exists(substr($day, -7,-2), $holiday)) {
+          echo "<div>{$holiday[substr($day, -7,-2)]}</div>";
+        } else {
+          echo "<div>&nbsp</div>";
+        }
+
+
+        echo "</div>";
       } else {
-        echo "<div class='date' >" . substr($day, 3) . "</div>";
+        echo "<div class='date' >" . $show . "</div>";
       }
     }
+
+
+
 
 
 

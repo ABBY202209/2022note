@@ -12,7 +12,7 @@
     /*請在這裹撰寫你的CSS*/
 
     .cal {
-      flex-wrap: wrap;
+      
       width: 100%;
       height: 500px;
       background-color: darkgray;
