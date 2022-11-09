@@ -224,7 +224,12 @@ echo "</pre>"; */
       // }
       else if (substr($day, -1) >= 1 && substr($day, -1) <= 5) {
 
-        echo "<div class='date'";
+        echo "<div class='date";
+        if (array_key_exists(substr($day, -7,-2), $holiday)) {
+          echo " holiday'";
+        }else{
+          echo "'";
+        }
         if ($day == $today) {
           echo "style" . "='background-color: lightcyan'";
         }
