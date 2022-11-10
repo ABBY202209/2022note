@@ -45,34 +45,49 @@
             width: 5%;
             z-index: 2;
             margin-left: -5%;
-
+            
         }
-
+        
         .day {
             width: 80%;
             display: flex;
             flex-wrap: wrap;
+            
+            
+            margin-left: 5%;
+            justify-content: flex-end;
+            
+            
         }
-
+        
         .date {
             border: 1px solid #999;
             width: calc(100% / 7);
             margin-left: -1px;
             margin-top: -1px;
         }
+        .week{
+            width: calc(100% / 7);
+            justify-content: center;
+            align-items: flex-end;                    
+            
+        }
+        
 
         .cal .date:hover {
             transform: scale(1.05);
-            background-color: lightcyan;
+            background-color: cadetblue;
+            font-weight: bolder;
+            color:white ;
         }
 
         .left .btn:hover {
             transform: scale(1.05);
-            background-color: ;
+            background-color: cadetblue;
         }
 
         .holiday {
-            background-color: pink;
+            background-color: darksalmon;
         }
     </style>
 </head>
@@ -147,10 +162,13 @@
 
     <div class="main">
         <div class="header">
-            <?= $year; ?>
+            <h4>
+                <?= $year; ?>
 
-            <nav class="d-flex justify-content-around align-items-end  col-12 ">
-                <h1 class="col-3">
+            </h4>
+
+            <nav class="d-flex col-12 ">
+                <h1 class="col-3 ">
                     <?= $month; ?>
                 </h1>
                 <div class="col-9  ">
@@ -191,7 +209,7 @@
                 <?php
                 $week = array("mon.", "tue.", "wed.", "thu.", "fri.", "sat.", "sun.");
                 for ($i = 0; $i < 7; $i++) {
-                    echo "<div class='date d-flex flex-row'>";
+                    echo "<div class='week d-flex flex-row'>";
                     echo $week[$i];
                     echo "<div>&nbsp</div>";
                     echo "</div>";
@@ -215,7 +233,6 @@
 
 
                         if (array_key_exists(substr($day, -7, -2), $holiday)) {
-                            // if (array_key_exists("10-10", $holiday)) {
                             echo "<div>{$holiday[substr($day, -7, -2)]}</div>";
                         } else {
                             echo "<div>&nbsp</div>";
