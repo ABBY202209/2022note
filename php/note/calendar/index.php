@@ -10,7 +10,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     /*請在這裹撰寫你的CSS*/
+    *{
+      /* font-family:'Noto Sans TC',sans-serif !important; */
+      /* font-family:'cwTeXYen', sans-serif; */
+      
+    }
+    .top{
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
+    }
     .cal {
       
       width: 100%;
@@ -116,7 +124,7 @@
 
   <!-- echo -->
   <div class="cal ">
-    <div class="p-3  text-white rounded ">
+    <div class="top">
       <?= $year; ?>
       <h1>
         <?= $month; ?>
@@ -208,12 +216,7 @@
 
     </main>
   </div>
-  <label for="exampleColorInput" class="form-label">
-    <font style="vertical-align: inherit;">
-      <font style="vertical-align: inherit;">選色器</font>
-    </font>
-  </label>
-  <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="選擇你的顏色">
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
