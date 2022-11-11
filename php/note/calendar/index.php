@@ -15,7 +15,7 @@
 
 
     .header {
-      background-color: cadetblue;
+      background-color: #95a098;
       margin: auto;
       width: 60%;
       font-weight: 1000;
@@ -58,9 +58,8 @@
     .nbsp{
       width: 100%;
       height: 85%;
-      background-color: #999;
+      background-color: rgb(235, 214, 176,0.6);
       margin-left: 15%;
-      opacity: 0.2;
       border-radius: 20px 20px 20px 20px;
     }
 
@@ -107,18 +106,21 @@
 
     .cal .date:hover {
       transform: scale(1.05);
-      background-color: cadetblue;
+      background-color:  #95a098;
       font-weight: bolder;
       color: white;
     }
 
     .left .btn:hover {
       transform: scale(1.05);
-      background-color: cadetblue;
+      background-color:  #95a098;
     }
 
     .holiday {
-      background-color: darksalmon;
+      /* background-color: rgb(255, 204, 211); */
+      background-color: #728A7A;
+      color: white;
+
     }
   </style>
 </head>
@@ -277,9 +279,9 @@
 
 
             if (array_key_exists(substr($day, -7, -2), $holiday)) {
-              echo "<div style='background-color: burlywood' >{$holiday[substr($day, -7, -2)]}</div>";
+              echo "<div style='background-color: #c4c1bc' >{$holiday[substr($day, -7, -2)]}</div>";
             } else if (array_key_exists(substr($day, -7, -2), $TWN)) {
-              echo "<div style='background-color: burlywood' >{$TWN[substr($day, -7, -2)]}</div>";
+              echo "<div style='background-color: #c4c1bc' >{$TWN[substr($day, -7, -2)]}</div>";
             } else {
               echo "<div>&nbsp</div>";
             }
@@ -295,15 +297,16 @@
               echo "'";
             }
             if ($day == $today) {
-              echo "style" . "='background-color: lightcyan'";
+              echo "style" . "='background-color: rgb(235, 214, 176,0.6)'";
+            
             }
             echo ">";
             echo $show;
 
             if (array_key_exists(substr($day, -7, -2), $holiday)) {
-              echo "<div style='background-color: burlywood'>{$holiday[substr($day, -7, -2)]}</div>";
+              echo "<div style='background-color: #c4c1bc;color:white'>{$holiday[substr($day, -7, -2)]}</div>";
             } else if (array_key_exists(substr($day, -7, -2), $TWN)) {
-              echo "<div style='background-color: burlywood' >{$TWN[substr($day, -7, -2)]}</div>";
+              echo "<div style='background-color: #c4c1bc;color:white' >{$TWN[substr($day, -7, -2)]}</div>";
             } else {
               echo "<div>&nbsp</div>";
             }
