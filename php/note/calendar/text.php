@@ -171,7 +171,7 @@
                 <h1 class="col-3 ">
                     <?= $month; ?>
                 </h1>
-                <div class="col-9  ">
+                <div class="d-flex justify-content-around col-9  ">
                     <a href="?y=<?= $prevYear ?>&m=<?= $prevMonth; ?>" class="btn btn-outline-light ">
                         <?= $prevMonth; ?>月
                     </a>
