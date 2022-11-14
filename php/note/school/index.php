@@ -11,6 +11,12 @@
 
 <body>
     <h1>學生管理系統</h1>
+    <nav>
+        <a href="./add_student.php">新增學生</a>
+        <a href="./add_student.php">教師註冊</a>
+        <a href="./add_student.php">教師登入</a>
+        
+    </nav>
     <a href="./add_student.php">新增</a>
     <a href="./edit_student.php">編輯</a>
     <a href="./del_student.php">刪除</a>
@@ -56,22 +62,27 @@
     <!-- id 的命名不會用"-" ; "-" 通常用在class-->
     <table class=list-students>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>學號</td>
+            <td>姓名</td>
+            <td>生日</td>
+            <td>畢業國中</td>
+            <td>年齡</td>
+            <td>操作</td>
         </tr>
 <?php
 foreach($ROWS as $ROW){
-    $AGE=round(strtotime('now')-strtotime($ROW['birthday'])/(60*60*24*365),1);
+    $AGE=round((strtotime('now')-strtotime($ROW['birthday']))/(60*60*24*365),1);
    
     echo "<tr>";
     echo "<td>{$ROW['school_num']}</td>";
     echo "<td>{$ROW['name']}</td>";
     echo "<td>{$ROW['birthday']}</td>";
     echo "<td>{$ROW['graduate_at']}</td>"; //{字串}
-    echo "<td>$AGE</td>";             
+    echo "<td>$AGE</td>";  
+    echo "<td>";
+    echo "<a href='edit.php?id={$ROW['id']}'>編輯</a>";           
+    echo "<a href='del.php?id={$ROW['id']}'>刪除</a>";           
+             
     echo "</tr>";
 }
 ?>
