@@ -45,11 +45,25 @@
     // $ROWS = $PDO->query($SQL)->fetch(PDO::FETCH_ASSOC);
 
 
-    echo "<pre>";
-    print_r($ROWS);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($ROWS);
+    // echo "</pre>";
 
     ?>
+
+    <table>
+<?php
+foreach($ROWS as $ROW){
+    echo "<tr>";
+    echo "<td>{$ROW['school_num']}</td>";
+    echo "<td>{$ROW['name']}</td>";
+    echo "<td>{$ROW['birthday']}</td>";
+    echo "<td>{$ROW['graduate_at']}</td>";
+    echo "<td></td>";
+    echo "</tr>";
+}
+?>
+    </table>
 
 </body>
 
