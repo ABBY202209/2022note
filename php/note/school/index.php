@@ -54,12 +54,14 @@
     <table>
 <?php
 foreach($ROWS as $ROW){
+    $AGE=round(strtotime('now')-strtotime($ROW['birthday'])/(60*60*24*365),1);
+   
     echo "<tr>";
     echo "<td>{$ROW['school_num']}</td>";
     echo "<td>{$ROW['name']}</td>";
     echo "<td>{$ROW['birthday']}</td>";
-    echo "<td>{$ROW['graduate_at']}</td>";
-    echo "<td></td>";
+    echo "<td>{$ROW['graduate_at']}</td>"; //{字串}
+    echo "<td>$age</td>";             
     echo "</tr>";
 }
 ?>
