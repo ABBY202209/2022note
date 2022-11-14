@@ -12,9 +12,9 @@
 <body>
     <h1>學生管理系統</h1>
     <nav>
-        <a href="./add_student.php">新增學生</a>
-        <a href="./add_student.php">教師註冊</a>
-        <a href="./add_student.php">教師登入</a>
+        <a href="add.php">新增學生</a>
+        <a href="reg.php">教師註冊</a>
+        <a href="login.php">教師登入</a>
         
     </nav>
     <a href="./add_student.php">新增</a>
@@ -36,6 +36,7 @@
     //$PDO工具箱
     //資料庫的密碼
     //new +xxx 是固定用法 
+    //資料庫設定,使用者帳號,使用者密碼,附加設定(可略)
     // $PDO = new PDO($DSN, 'root', '');
 
     //動作
