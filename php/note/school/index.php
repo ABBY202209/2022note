@@ -11,6 +11,7 @@
 
 <body>
     <h1>學生管理系統</h1>
+    <a href="./add_student.php">新增</a>
     <?php
     //先設一個變數:是一個參數，說明資料庫的設定
     //"主機;編碼;資料庫名稱*非資料表";
@@ -50,8 +51,15 @@
     // echo "</pre>";
 
     ?>
-
-    <table>
+    <!-- id 的命名不會用"-" ; "-" 通常用在class-->
+    <table class=list-students>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
 <?php
 foreach($ROWS as $ROW){
     $AGE=round(strtotime('now')-strtotime($ROW['birthday'])/(60*60*24*365),1);
@@ -61,7 +69,7 @@ foreach($ROWS as $ROW){
     echo "<td>{$ROW['name']}</td>";
     echo "<td>{$ROW['birthday']}</td>";
     echo "<td>{$ROW['graduate_at']}</td>"; //{字串}
-    echo "<td>$age</td>";             
+    echo "<td>$AGE</td>";             
     echo "</tr>";
 }
 ?>

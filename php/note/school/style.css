@@ -3,3 +3,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* 一般的寫前面，特殊的寫後面 */
+.list-students{
+    border-color: cadetblue;
+}
+.list-students td{
+    border: 1px solid #ccc;
+}
+.list-students td:nth-last-child(1){
+text-align: right;
+}
