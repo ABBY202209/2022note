@@ -12,6 +12,7 @@
 <body>
     <h1>學生管理系統</h1>
     <a href="./add_student.php">新增</a>
+    <a href="./del_student.php">刪除</a>
     <?php
     //先設一個變數:是一個參數，說明資料庫的設定
     //"主機;編碼;資料庫名稱*非資料表";
