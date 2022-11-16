@@ -10,6 +10,7 @@
 
 <body>
     <p id="examplel-p"></p>
+    <button type="button" id="back" onclick="backfun()">backbtn</button>
 
     <script>
         let x = 2;
@@ -38,6 +39,11 @@
 
         console.log(typeof int);
 
+        function backfun(){
+            console.log(history);
+            history.back();
+
+        }
         
     </script>
 </body>

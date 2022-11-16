@@ -17,23 +17,36 @@
 <body>
     <h1 id="myh1">location.href</h1>
     <h1 id="myh2">width</h1>
-    <h1 id="myh2">width</h1>
-<button type="button" id="mybtn">mybtn</button>
-<!-- button 要加type -->
+    <h1 id="myh3">width</h1>
+    <button type="button" id="mybtn">mybtn</button>
+    <!-- button 要加type -->
     <script>
         console.log('window.location.href', window.location.href)
-        let url=location.href;
-        console.log('url',url);
-        document.getElementById('myh1').innerText=url;
-        console.log('document',document);
+        let url = location.href;
+        console.log('url', url);
+        document.getElementById('myh1').innerText = url;
+        console.log('document', document);
 
-        console.log('width',screen.width);
-        
-        
+        console.log('width', screen.width);
+        let width = screen.width;
+        console.log('width'.width);
+        document.getElementById('myh2').textContent = width;
+        document.getElementById('myh3').innerHTML = '<hr>width';
 
-        document.getElementById('mybtn').addEventListener('click',function () {
+
+
+
+        document.getElementById('mybtn').addEventListener('click', function () {
             console.log('mybtn ok');
-            location.assign('http://www.w3schools.com');
+            // location.assign('http://www.w3schools.com');
+            // //assign可以回到上一頁
+            // location.replace('http://www.w3schools.com');
+            // //replace無法回到上一頁
+            // location.href = "#myh1";
+            // //跳到id
+            location.href="./j20221116.html";
+            //切換頁面
+
         })
     </script>
 </body>
