@@ -7,11 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1 id="myh1">name</h1>
+    <h2 id="myh2">number</h2>
     <script>
         // prompt('name?');
         let myname=prompt('name?');
+        let mynum=prompt('num ?');
         console.log(myname);
+        console.log(mynum);
+        document.getElementById('myh1').innerText=myname;
+        document.getElementById('myh2').innerText=mynum;
+
+
+        let myvar='text myvar';
+        function myfun(){
+            console.log('myfun ok');
+        }
+
 
     </script>
 </body>
