@@ -9,14 +9,28 @@
 <body>
     <h1 id="myh1">name</h1>
     <h2 id="myh2">number</h2>
+
     <script>
         // prompt('name?');
-        let myname=prompt('name?');
-        let mynum=prompt('num ?');
+        // let myname=prompt('name?');
+        //強制轉型
+        // let myname=Number(prompt('name?'));
+        //整數
+        let myname=parseInt(prompt('name?'));
+        // let mynum=prompt('num ?');
+        // let mynum=Number(prompt('num ?'));
+        let mynum=parseInt(prompt('num ?'));
+
         console.log(myname);
         console.log(mynum);
+
         document.getElementById('myh1').innerText=myname;
         document.getElementById('myh2').innerText=mynum;
+        // var x,y;
+        // x=myname;
+        // y=mynum;
+        document.write(+myname+"+"+mynum+"="(myname+mynum));
+
 
 
         let myvar='text myvar';
