@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="examplel-p"></p>
+
+    <script>
+        let x = 2;
+        let p = document.getElementById("examplel-p");
+        p.innerText = 5 * x;
+        //let 不能重覆宣告
+
+        var y = 2;
+        var y = 3;
+        document.write(y);
+        //var是全域變數，重複宣告會蓋掉
+
+        const gravity=9.8;
+        gravity=1234;
+        document.write(gravity);
+        //不能改值
+
+        let str="文字";
+        let str2='文字';
+        let str3='文字';
+        let str4='aaaa';
+
+        let int=123;
+        let float=123.456;
+        let bool=true;
+
+        console.log(typeof int);
+
+        
+    </script>
+</body>
+
+</html>
