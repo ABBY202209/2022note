@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>某某醫院</h1>
+    <h2 id="hello">醫生資料</h2>
+
+    <p>目前人數:<span id="people">0</span></p>
+    <p>額滿:<span id="isFull">可以掛號</span></p>
+
+    <script>
+    
+        
+    //boolean
+        //flag 旗標
+        // 100掛號 爆滿了
+        // isFull = false
+        // 綠燈可以掛號
+        // 超過100人 不可以掛號
+
+        // 紅燈
+        // 綠燈
+        // 人數
+        // addPeople = 200;
+        function setStatus(addPeople) {
+            people = people + addPeople;
+            if (people > 100) {
+                isFull = true;
+            }
+            console.log('people', people);
+            console.log('isFull', isFull);
+            peopleP.textContent = people;
+            if (isFull) {
+                isFullP.textContent = '額滿了';
+                isFullP.style.color = 'red';
+            } else {
+                isFullP.textContent = '可以掛號';
+            }
+        }
+
+        const peopleP = document.getElementById('people');
+        const isFullP = document.getElementById('isFull');
+
+        let isFull = false;
+        let people = 0;
+        let addPeople = 0
+
+        console.log('init people', people);
+        console.log('init isFull', false);
+
+        // addPeople = 1
+        // people = people + addPeople ;
+        // isFull = false;
+
+        setStatus(99);
+        setStatus(1);
+        setStatus(1);
+        setStatus(1);
+        setStatus(1);
+    </script>
+</body>
+</html>

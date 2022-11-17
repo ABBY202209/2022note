@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="myh1">name1</h1>
+    <h2 id="myh2">name2</h2>
+    <h1 id="sum">sum</h1>
+
+    <button type="button" onclick="test();">testbtn</button>
+    <script>
+         // function
+         function greeting(){
+            console.log('hello :))');
+        }
+        greeting();
+
+        // 動作
+        function getSum(aInput,b){
+            let result = aInput + b;
+            console.log('getSum',result);
+            return result;
+        }
+
+        //抓id
+        const myh1 = document.getElementById('myh1');
+        const myh2 = document.getElementById('myh2');
+        const mySum = document.getElementById('sum');
+
+        let myname1=prompt('name1?');
+        let myname2=prompt('name2 ?');
+        
+        console.log(myh1);
+        console.log(myh2);
+
+        //run主程式
+        let resultSum =getSum(myname1,myname2);
+        console.log('resultsum',resultSum)
+
+        mySpan1.textContent = getNum1;
+        mySpan2.textContent = getNum2;
+        mySum.textContent = resultSum;
+        
+
+        
+        
+
+
+
+    </script>
+</body>
+</html>
