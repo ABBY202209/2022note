@@ -1,9 +1,8 @@
 <?php
 $DSN = "mysql:host=localhost;charset=utf8;dbname=school";
 $PDO = new PDO($DSN, 'root', '');
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,22 +54,29 @@ $PDO = new PDO($DSN, 'root', '');
             <td><input type="text" name="tel"value="<?=$student['tel'];?>"></td>
         </tr>
         <tr>
-            <td>dept</td>
+            <td>科系</td>
             <td>
+              
                 <select name="dept">
                     <?php
                         //從`dept`資料表中撈出所有的科系資料並在網頁上製作成下拉選單的項目
                         $SQL="SELECT * FROM `dept`";
                         $depts=$PDO->query($SQL)->fetchAll(PDO::FETCH_ASSOC);
                         foreach($depts as $dept){
-                            echo "<option value='{$dept['id']}'>{$dept['name']}</option>";
+                          // if ($dept['id']==$student['dept']) {
+                          //   $selected='selected';
+                          // }else{
+                          //   $selected='';
+                          // }
+                          $selected=($dept['id']==$student['dept'])?'selected':'';
+                            echo "<option value='{$dept['id']}'$selected>{$dept['name']}</option>";
                         }
                     ?>
                 </select>
             </td>
         </tr>
         <tr>
-            <td>graduate_at</td>
+            <td>畢業國中</td>
             <td>
                 <select name="graduate_at" >
                     <?php 
@@ -78,14 +84,15 @@ $PDO = new PDO($DSN, 'root', '');
                     $SQL="SELECT * FROM `graduate_school`";
                     $grads=$PDO->query($SQL)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($grads as $grad){
-                        echo "<option value='{$grad['id']}'>{$grad['county']}{$grad['name']}</option>";
+                      $selected=($grad['id']==$student['graduate_at'])?'selected':'';
+                        echo "<option value='{$grad['id']}'$selected>{$grad['county']}{$grad['name']}</option>";
                     }
                     ?>
                 </select>
             </td>
         </tr>
         <tr>
-            <td>status_code</td>
+            <td>狀態</td>
             <td>
                 <select name="status_code" >
                     <?php 
@@ -93,7 +100,8 @@ $PDO = new PDO($DSN, 'root', '');
                     $SQL="SELECT * FROM `status`";
                     $rows=$PDO->query($SQL)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($rows as $row){
-                        echo "<option value='{$row['code']}'>{$row['status']}</option>";
+                      $selected=($row['code']==$student['status_code'])?'selected':'';
+                        echo "<option value='{$row['code']}'$selected>{$row['status']}</option>";
                     }
                     ?>
                 </select>
@@ -102,19 +110,29 @@ $PDO = new PDO($DSN, 'root', '');
         <tr>
             <td>班級</td>
             <td>
-                <select name="class_code" onchange="upadte.php">
+                
+                <select name="class_code" >
                     <?php
+                    $stu_class=$PDO->query("SELECT * FROM `class_student` WHERE `school_num`='{$student['school_num']}'")->fetch(PDO::FETCH_ASSOC);
                     //從`classes`資料表中撈出所有的班級資料並在網頁上製作成下拉選單的項目
                     $SQL="SELECT `id`,`code`,`name` FROM `classes`";
                     $rows=$PDO->query($SQL)->fetchAll(PDO::FETCH_ASSOC);
                     foreach($rows as $row){
-                        echo "<option value='{$row['code']}'>{$row['name']}</option>";
+                      $selected=($row['code']==$stu_class['class_code'])?'selected':'';
+
+                        echo "<option value='{$row['code']}'$selected>{$row['name']}</option>";
                     }
                     ?>
                 </select>                
             </td>
         </tr>
+        <tr>
+            <td>座號</td>
+            <td><?=$stu_class['seat_num'];?></td>
+        </tr>
     </table>
+    <!-- hidden 隱藏欄位 -->
+    <input type="hidden" name="id" value="<?=$sutdent["id"];?>">
     <input type="submit" value="確認修改">
 </body>
 </html>
