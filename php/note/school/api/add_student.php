@@ -10,8 +10,11 @@ VALUES (NULL, '9720406', 'ABBY', '2022-11-14', 'A123456789', '新北市泰山區
 
 // $PDO->query($SQL);
 $RES=$PDO->exec($SQL);
-echo "新增結果".$RES;
+// echo "新增結果".$RES;
 
+//header 導向 (location 定位:.//外層的某個檔案 ./本層的某個標案)
+// header("location:../index.php?studus=add_success");
+header("location:../index.php?studus=$status");
 
 
 ?>

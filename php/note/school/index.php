@@ -11,11 +11,26 @@
 
 <body>
     <h1>學生管理系統</h1>
+    <!-- 根據status來顯示回應 -->
+    <?php
+    if (isset($_GET[`status`])) {
+        switch ($_GET[`status`]) {
+            case 'value':
+                case 'value':
+                    # code...
+                    break;
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
+    ?>
     <nav>
         <a href="add.php">新增學生</a>
         <a href="reg.php">教師註冊</a>
         <a href="login.php">教師登入</a>
-        
     </nav>
     <a href="./add_student.php">新增</a>
     <a href="./edit_student.php">編輯</a>
@@ -24,14 +39,14 @@
     //先設一個變數:是一個參數，說明資料庫的設定
     //"主機;編碼;資料庫名稱*非資料表";
     // $DSN = "mysql:host=localhost;charset=utf8;dbname=school";
-    $DSN=mysqli_connect('localhost','root','','school');
-    mysqli_set_charset($DSN,'utf8');
-    
+    $DSN = mysqli_connect('localhost', 'root', '', 'school');
+    mysqli_set_charset($DSN, 'utf8');
+
     $SQL = "SELECT * FROM `students` LIMIT 5";
-    
-    $result=mysqli_query($DSN,$SQL);
-    $ROWS = mysqli_fetch_all($result,MYSQLI_ASSOC);
-    
+
+    $result = mysqli_query($DSN, $SQL);
+    $ROWS = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 
     //$PDO工具箱
     //資料庫的密碼
@@ -70,23 +85,23 @@
             <td>年齡</td>
             <td>操作</td>
         </tr>
-<?php
-foreach($ROWS as $ROW){
-    $AGE=round((strtotime('now')-strtotime($ROW['birthday']))/(60*60*24*365),1);
-   
-    echo "<tr>";
-    echo "<td>{$ROW['school_num']}</td>";
-    echo "<td>{$ROW['name']}</td>";
-    echo "<td>{$ROW['birthday']}</td>";
-    echo "<td>{$ROW['graduate_at']}</td>"; //{字串}
-    echo "<td>$AGE</td>";  
-    echo "<td>";
-    echo "<a href='edit.php?id={$ROW['id']}'>編輯</a>";           
-    echo "<a href='del.php?id={$ROW['id']}'>刪除</a>";           
-             
-    echo "</tr>";
-}
-?>
+        <?php
+        foreach ($ROWS as $ROW) {
+            $AGE = round((strtotime('now') - strtotime($ROW['birthday'])) / (60 * 60 * 24 * 365), 1);
+
+            echo "<tr>";
+            echo "<td>{$ROW['school_num']}</td>";
+            echo "<td>{$ROW['name']}</td>";
+            echo "<td>{$ROW['birthday']}</td>";
+            echo "<td>{$ROW['graduate_at']}</td>"; //{字串}
+            echo "<td>$AGE</td>";
+            echo "<td>";
+            echo "<a href='edit.php?id={$ROW['id']}'>編輯</a>";
+            echo "<a href='del.php?id={$ROW['id']}'>刪除</a>";
+
+            echo "</tr>";
+        }
+        ?>
     </table>
 
 </body>
