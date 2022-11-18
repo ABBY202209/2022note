@@ -16,11 +16,11 @@
     if (isset($_GET[`status`])) {
         switch ($_GET[`status`]) {
             case 'value':
-                case 'value':
-                    # code...
-                    break;
+            case 'value':
+                # code...
                 break;
-            
+                break;
+
             default:
                 # code...
                 break;
@@ -31,6 +31,16 @@
         <a href="add.php">新增學生</a>
         <a href="reg.php">教師註冊</a>
         <a href="login.php">教師登入</a>
+    </nav>
+    <nav>
+        <?php
+        
+        $SQL = "SELECT `id`,`code`,`name` FROM `classes`";
+        $classes = $PDO->query($SQL)->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($classes as $class) {
+            echo "<li>{$classe['name']}</li>";
+        }
+        ?>
     </nav>
     <a href="./add_student.php">新增</a>
     <a href="./edit_student.php">編輯</a>
@@ -103,7 +113,37 @@
         }
         ?>
     </table>
+    <div>
+        <!-- 分頁處理 -->
+        <?php
+        $div=10;//一頁筆數
+        $total= $PDO->query($sql_total)->fetchColumn();//算總筆數 count
+        echo "總筆數為".$total;
+        $pages=ceil($total/$div);//ceil取整數
+        echo "總頁數為".$pages;
+        $now=(isset($_GET['page']))?$_GET['page']:1;
+        echo "當前頁為".$now;
+        $start=($now-1)*$div;
+        // 1 0 *$div
+        // 2 1 *$div
+        // 3 2 *$div
 
+        
+        for ($i=1; $i < $pages; $i++) { 
+            if (isser($_GET[])) {
+                # code...
+            }
+            echo "<a href=''>";
+            echo $i;
+            echo "</a>";
+        }
+        ?>
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+    </div>
 </body>
 
 </html>
