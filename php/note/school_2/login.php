@@ -7,11 +7,6 @@
     <title>教師登入</title>
 </head>
 <body>
-  <h1>教師登入</h1>  
-  <form action="" method="post">
-    <div>帳號：<input type="text" name="acc" id=""></div>
-    <div>密碼：<input type="password" name="pw" id=""></div>
-    <div><input type="submit" value="登入"></div>
-  </form>
+<h1>教師登入</h1>
 </body>
 </html>
