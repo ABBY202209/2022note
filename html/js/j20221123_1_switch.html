@@ -19,7 +19,12 @@
         //output hello xxx 您好 歡迎光臨
         //other hello 尚未註冊，請快註冊
         const resultinput = document.getElementById('result');
-        resultinput.textContent = "hello XXX 您好 歡迎光臨"
+        const resultinput1 = document.getElementById('result');
+        const resultinput2 = document.getElementById('result').textContent;
+        console.log('resultinput1',resultinput1);
+        console.log('resultinput2',resultinput2);
+
+        resultinput.textContent = "hello XXX 您好 歡迎光臨";
         let getname = prompt('請輸入您的名稱');
 
         // let name ='amy123';
@@ -45,6 +50,7 @@
 
             default:
                 console.log('尚未註冊，請先註冊');
+                resultinput.textContent ='尚未註冊，請先註冊';
                 break;
         }
     </script>
