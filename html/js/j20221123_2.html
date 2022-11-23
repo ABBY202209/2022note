@@ -40,32 +40,58 @@
 
         //var let 2-19
         //var 全域變數 function內可以有區域變數的情況
-        
+
         var varX = 2; //外部varX 別人寫的
         function cal() {
             console.log('ex varX', varX);// 當區域內有宣告變數時會優先吃區域變數，因為47行有區域變數，所以46行抓不到，會顯示undefined
             var varX = 5, varY = 1;//區域變數 自己寫的
-            console.log('varX+varY', varX+varY ); //47行有宣告變數，所以結果是5+1=6
+            console.log('varX+varY', varX + varY); //47行有宣告變數，所以結果是5+1=6
         }
         cal();
         console.log('varX', varX); //function外，會以全域為主，所以是2
 
         //let {}內可以有區域變數
-        var  a=5,b=0;
-        let letX=2,letY=0;
+        var a = 5, b = 0;
+        let letX = 2, letY = 0;
         {
-            var c=a+b;
-            let letz =letX +letY;
+            var c = a + b;
+            let letz = letX + letY;
 
         }
-        console.log('c',c);
+        console.log('c', c);
         // console.log('letZ',letz);
 
         //轉型 
         let xx = '56'; //string
-        console.log('x typeof',typeof(xx));
-        let yy=Number(xx); //number
-        console.log('y typeof',typeof(yy));
+        console.log('x typeof', typeof (xx));
+        let yy = Number(xx); //number
+        console.log('y typeof', typeof (yy));
+
+        //if else
+        let xxx = 3;
+        //condition 內放條件
+        if (xxx > 5) {
+            console.log('x>5');
+        } else if (xxx == 3) {
+            console.log('xxx=3');
+        } else {
+            console.log('x<5');
+
+        }
+
+        //switch 適用在單元件
+        let account = '';
+        switch (account) {
+            case 'a': s
+                break;
+            case 'b':
+                break;
+            case 'c':
+                break;
+            case 'd':
+                break;
+
+        }
 
     </script>
 </body>
