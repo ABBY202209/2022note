@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>switch case</h1>
+    <p id="result">
+
+    </p>
+
+    <script>
+        //input prompt 輸入使用者名稱 判斷amy bob cat other
+        //output hello xxx 您好 歡迎光臨
+        //other hello 尚未註冊，請快註冊
+        const resultinput = document.getElementById('result');
+        resultinput.textContent = "hello XXX 您好 歡迎光臨"
+        let getname = prompt('請輸入您的名稱');
+
+        // let name ='amy123';
+        let resulttext = "";
+        // resulttext = `hello ${getname} 您好 歡迎光臨`;
+        
+        switch (getname) {
+            case 'amy':
+                resulttext = `hello ${getname} 您好 歡迎光臨`;
+                console.log('amy....');
+                resultinput.textContent = resulttext;
+                break;
+                case 'bob':
+                    resulttext = `hello ${getname} 您好 歡迎光臨`;
+                    console.log('bob....');
+                    resultinput.textContent = resulttext;
+                    break;
+                    case 'cat':
+                        resulttext = `hello ${getname} 您好 歡迎光臨`;
+                        console.log('cat....');
+                        resultinput.textContent = resulttext;
+                break;
+
+            default:
+                console.log('other');
+                break;
+        }
+    </script>
+</body>
+
+</html>
