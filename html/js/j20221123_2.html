@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //變數的type
+        let x = "text"; //string字串
+        let y = 123; //number數字
+        let z = true; //boolean 布林值
+
+        //查看變數型態
+        //console.log =>js 按f12 查看console 的資料
+        console.log('x typeof() =>', typeof (x));
+        console.log('y typeof() =>', typeof (y));
+        console.log('z typeof() =>', typeof (z));
+
+        //宣告變數
+        //let 區域變數
+        let localNum = 11;
+        console.log('init localNum', localNum);
+        localNum = 5678;
+        console.log('loncalNum', localNum);
+        //const 常數
+        const constNum = 3.14;
+        console.log('init constNum', constNum);
+
+        // constNum=123;
+        //j20221123_2.html:35 Uncaught TypeError: Assignment to constant variable.
+
+        console.log('constNum', constNum);
+
+        //var let 2-19
+        //var 全域變數 function內可以有區域變數的情況
+        
+        var varX = 2; //外部varX 別人寫的
+        function cal() {
+            console.log('ex varX', varX);// 當區域內有宣告變數時會優先吃區域變數，因為47行有區域變數，所以46行抓不到，會顯示undefined
+            var varX = 5, varY = 1;//區域變數 自己寫的
+            console.log('varX+varY', varX+varY ); //47行有宣告變數，所以結果是5+1=6
+        }
+        cal();
+        console.log('varX', varX); //function外，會以全域為主，所以是2
+
+        //let {}內可以有區域變數
+        var  a=5,b=0;
+        let letX=2,letY=0;
+        {
+            var c=a+b;
+            let letz =letX +letY;
+
+        }
+        console.log('c',c);
+        // console.log('letZ',letz);
+
+        //轉型 
+        let xx = '56'; //string
+        console.log('x typeof',typeof(xx));
+        let yy=Number(xx); //number
+        console.log('y typeof',typeof(yy));
+
+    </script>
+</body>
+
+</html>
