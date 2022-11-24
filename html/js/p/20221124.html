@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        //只要名稱沒有衝突，可以建立很多函式
+
+        //建立函式
+        function test() {
+            console.log("holle");
+            console.log("world");
+
+        }
+        //呼叫參數
+        test();
+        test();
+
+        //印出任意資料
+        function show(message) {
+            console.log('message', message);
+        }
+        show();//空的undefined
+        show("hello");
+        show(10);
+
+        /*
+        //做除法
+        function divide(num1,num2) {
+            let result=num1/num2;
+            console.log("result",result);
+        }
+        divide(3,2);
+        divide(10,2);
+        divide("hello","world");//字串無法減乘除NaN
+        */
+        //用另一種寫法做除法
+        let divide = function (num1, num2) {
+            let result = num1 - num2;
+            console.log("result1", result);
+        }
+
+        divide(3, 2);
+        divide(10, 2);
+        divide("hello", "world");//字串無法減乘除NaN
+
+        //回傳值
+        function test() {
+            return;//寫這邊的話會直接結束
+            console.log("holle");
+            console.log("world");
+
+        }
+        test();
+        test();
+
+
+        function test() {
+            console.log("holle");
+            console.log("world");
+            return;//寫這邊的話會跑完再結束
+
+        }
+        //呼叫參數
+        let value
+        
+
+    </script>
+</body>
+
+</html>
