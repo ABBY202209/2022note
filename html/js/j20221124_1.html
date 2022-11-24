@@ -13,14 +13,73 @@
     <!-- 九九乘法表 -->
     <!-- 1.印出九九乘法表 -->
     <!-- 2.使用input的方式 -->
-    <input type="text" name="" id="myText" value="strz">
-    <button id="myBtn" onclick="mybtnfun()">送出</button>
-    <p id="myp"></p>
+    <input type="text" name="" id="num1" value="9">
+    <input type="text" name="" id="num2" value="9">
+    <button type="button" id="myBtn" onclick="mybtnfun();" >送出</button>
+    <div id="myDiv"></div>
     </br><br><br>
     <script>
         //num1 num2
-        let num1=prompt('num1?');
-        let num2=prompt('num2?');
+        // let mynum1=prompt('mynum1?');
+        // let mynum2=prompt('mynum2?');
+
+        //3.function
+        //(1)function onclick
+        // (2)document write =>清空
+        // (3)document write =>res string 組合
+        // (4)div innerHTML 放入res string
+        function mybtnfun() {
+            let getnum1=num1Input.value;
+            let getnum2=num2Input.value;
+            console.log('getNum1',getnum1);
+            console.log('getNum2',getnum1);
+            let res = "";
+
+            for (let i = 1; i <= getnum1; i++) {
+                for (let j = 1; j <= getnum2; j++) {
+
+                    // i 1.number -> string
+                    let iStr = i.toString();
+                    // i 2.string -> 補0
+                    iStr = iStr.padStart(2, "0");
+
+                    // j 1.number -> string
+                    let jStr = j.toString();
+                    // j 2.string -> 補0
+                    jStr = jStr.padStart(2, "0");
+
+                    // i * j
+                    // j 1.number -> string
+                    let result = i * j;
+                    let resultStr = result.toString();
+                    // j 2.string -> 補0
+                    resultStr = resultStr.padStart(2, "0");
+
+                    // let str = `${i} * ${j} = ${i*j} ;`;
+                    // let str = `${iStr} * ${jStr} = ${resultStr} &nbsp;&nbsp;&nbsp;`;
+                    res = res + `${iStr} * ${jStr} = ${resultStr} &nbsp;&nbsp;&nbsp;`;
+
+                }
+                res = res + "<br>";
+                // document.write('<br>');
+            }
+
+            console.log(res);
+            myDiv.innerHTML = res; 
+        }
+        
+        //1.綁定
+        const num1Input = document.getElementById('num1');
+        const num2Input = document.getElementById('num2');
+        const myBtn = document.getElementById('myBtn');
+        const myDiv = document.getElementById('myDiv');
+
+        //2.textcontent 不可
+        let num1 = num1Input.value;
+        let num2 = num2Input.value;
+        console.log('num1',num1);
+        console.log('num2',num2);
+
 
 
 
