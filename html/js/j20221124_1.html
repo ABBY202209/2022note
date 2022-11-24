@@ -1,40 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!-- for loop -->
     <!-- 九九乘法表 -->
+    <!-- 1.印出九九乘法表 -->
+    <!-- 2.使用input的方式 -->
+    <input type="text" name="" id="myText" value="strz">
+    <button id="myBtn" onclick="mybtnfun()">送出</button>
+    <p id="myp"></p>
+    </br><br><br>
     <script>
-        for (let i = 1; i <=9; i++) {
-            for (let j = 1; j <=9 ; j++) {
+        //num1 num2
+        let num1=prompt('num1?');
+        let num2=prompt('num2?');
+
+
+
+        for (let i = 1; i <= num1; i++) {
+            for (let j = 1; j <= num2; j++) {
                 // let str =`${i}*${j}=${i*j}`;
                 // let str =i+"*"+j+"="+i*j;
-                let z=i*j;
-                let txtistr=i.toString();
-                let txtjstr=j.toString();
-                let txtzstr=z.toString();
-                let istr=txtistr.padStart(2,"0");
-                let jstr=txtjstr.padStart(2,"0");
-                let zstr=txtzstr.padStart(2,"0");
-                let str =istr+"*"+jstr+"="+zstr;
+                let z = i * j;
+                let txtistr = i.toString();//轉成字串
+                let txtjstr = j.toString();
+                let txtzstr = z.toString();
+                let istr = txtistr.padStart(2, "0");//再補零
+                let jstr = txtjstr.padStart(2, "0");
+                let zstr = txtzstr.padStart(2, "0");
+                let str = istr + "x" + jstr + "=" + zstr;
                 console.log(str);
-                console.log("txtstr",txtistr);
-                console.log("istr",istr);
+                console.log("txtstr", txtistr);
+                console.log("istr", istr);
                 document.write(str);
                 document.write('&nbsp &nbsp &nbsp');
-                
+
             }
             document.write('<br>');
         }
-            
+
             // js補0
             //先轉型成字串 tostring()
-         
+
     </script>
 </body>
+
 </html>
