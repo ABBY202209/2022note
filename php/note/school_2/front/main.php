@@ -1,5 +1,5 @@
 <?php
-include "../layouts/class_nav.php"
+include "/web/note/2022note/php/note/school_2/layouts/class_nav.php";
 ?>
 <?php
 if(isset($_GET['code'])){
