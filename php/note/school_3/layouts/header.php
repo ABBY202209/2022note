@@ -13,14 +13,13 @@
          * 所以要先把$_SERVER['PHP_SELF']字串做處理來因應更多不確定的路徑狀況
          * 原則就是我們只取$_SERVER['PHP_SELF']的最後一個字串，並去掉副檔名
          * 
-         * 方法有三：
-         * 1.因為路徑的字串型式都是以"/"做區隔，所以可以使用explode這個函式來把字串拆成陣列
-         * 2.而要取出陣列的最後一個值，則可以使用count()-1的方式(陣列個數-1就是陣列的最後一個元素的索引值)
-         * 3.也可以使用函式array_pop()來取得最後一個值(array_pop()的作用為回傳陣列的最後一個值)
+         * 因為路徑的字串型式都是以"/"做區隔，所以可以使用explode這個函式來把字串拆成陣列
+         * 而要取出陣列的最後一個值，則可以使用count()-1的方式(陣列個數-1就是陣列的最後一個元素的索引值)
+         * 也可以使用函式array_pop()來取得最後一個值(array_pop()的作用為回傳陣列的最後一個值)
          * 要注意的是array_pop()會使原陣列中的最後一個值從陣列中被刪除，所以要先設一個變數來代表陣列
          */
         $file_str = explode("/", $_SERVER['PHP_SELF']);
-        $local = str_replace('.php', '', array_pop($file_str));//str_replace(目標,取代成,從)
+        $local = str_replace('.php', '', array_pop($file_str));
         switch ($local) {
             case "index":
                 echo "<div>";
@@ -47,6 +46,7 @@
                 echo "</div>";
                 echo "<div>";
                 echo "<a class='mx-2' href='admin_center.php?do=students_list'>學生管理</a>";
+                echo "<a class='mx-2' href='admin_center.php?do=news'>新聞管理</a>";
                 echo "</div>";
                 echo "<div>";
                 //<!-- <a href="?do=add">新增學生</a> -->
