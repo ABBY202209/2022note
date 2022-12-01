@@ -35,12 +35,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        //function
+        //註解可用f12去查看
+        //function 可重複使用
         //一般
         //宣告
         function myFun() {
-            document.write('ok');
-            console.log('myFun ok');
+            document.write('ok');//顯示ok在網頁上
+            console.log('myFun ok');//顯示myFun ok 在f12
         }
 
         //myFun呼叫myFun這個變數
@@ -50,15 +51,16 @@
         myFun();
 
 
-        //有變數
+        //有變數 
+        //兩個以上變數用「,」分開：nameInput,age
         function helloFun(nameInput, age) {
-            let str = `helle ${nameInput} ${age}`;
-            console.log('str', str);
+            let str = `hello ${nameInput} ${age}`;//串接給str
+            console.log('str', str);//顯示str在f12
 
         }
 
-        let name = '三十張呀';
-        helloFun(name, '3天');
+        let name = '三十張呀'; //宣告變數
+        helloFun(name, '3天');//呼叫heloFun這個function
 
         //input 兩個變數 num1 num2
         //btn
@@ -67,26 +69,27 @@
         //calFun
         function calFun(){
             // 執行的動作
-            let num1Vaule = Number(num1Input.value);
+            let num1Vaule = Number(num1Input.value);//轉換屬性為number
             let num2Vaule = Number(num2Input.value);
             let area = getArea(num1Vaule,num2Vaule); //回傳值 存入變數
-            getPeri(num1Vaule,num2Vaule);
+            getPeri(num1Vaule,num2Vaule);//回傳值並存入
 
+            //判斷回傳值並顯示對應的字串
+            // if 面積500以上 500以上 
+            // else 500以下
             if(area >= 500){
                 console.log('面積500以上');
             }else{
                 console.log('面積小於500');
             }
 
-            // if 面積500以上 500以上 
-            // else 500以下
         }
 
          // 面積
          function getArea(num1Vaule,num2Vaule){
             let result = num1Vaule * num2Vaule;
             console.log('Area',result);
-            return result;
+            return result;//回傳result值
             // let str = "";
             // if(result >= 500){
             //     str = '面積500以上';
@@ -106,7 +109,7 @@
             console.log('Peri',result);
         }
 
-        // 綁定
+        // 1.綁定
         const num1Input = document.getElementById('num1');
         const num2Input = document.getElementById('num2');
         const myBtnInput = document.getElementById('myBtn');
