@@ -13,7 +13,7 @@
 
 <body>
     <div class="container mt-3 ">
-        <h2>Contextual Classes</h2>
+        <h2>tea menu</h2>
         <p>Contextual classes can be used to color the table, table rows or table cells. The classes that can be used
             are: .table-primary, .table-success, .table-info, .table-warning, .table-danger, .table-active,
             .table-secondary, .table-light and .table-dark:</p>
@@ -33,13 +33,13 @@
                         <img src="" alt="">
                     </td>
                     <td>
-                        <input class="form-control" type="number" name="itme1Price" id="itme1Price" value="">
+                        <input class="form-control" type="number" name="item1Price" id="item1Price" value="50">
                     </td>
                     <td>
-                        <input class="form-control"type="number" name="itme1Count" id="itme1Count" value="" onchange="changeFun()";>
+                        <input class="form-control"type="number" name="item1Count" id="item1Count" value="1" onchange="changeFun()";>
                     </td>
                     <td>
-                        <input class="form-control"type="number" name="itme1Total" id="itme1Total" value="">
+                        <input class="form-control"type="number" name="item1Total" id="item1Total" value="">
                     </td>
                 </tr>
                 <tr>
@@ -48,13 +48,13 @@
                         <img src="" alt="">
                     </td>
                     <td>
-                        <input class="form-control" type="number" name="itme2Price" id="itme2Price" value="">
+                        <input class="form-control" type="number" name="item2Price" id="item2Price" value="55">
                     </td>
                     <td>
-                        <input class="form-control"type="number" name="itme2Count" id="itme2Count" value="" onchange="changeFun()";>
+                        <input class="form-control"type="number" name="item2Count" id="item2Count" value="1" onchange="changeFun()";>
                     </td>
                     <td>
-                        <input class="form-control"type="number" name="itme2Total" id="itme2Total" value="">
+                        <input class="form-control"type="number" name="item2Total" id="item2Total" value="">
                     </td>
                 </tr>
                 <tr>
@@ -63,73 +63,84 @@
                         <img src="" alt="">
                     </td>
                     <td>
-                        <input class="form-control" type="number" name="itme3Price" id="itme3Price" value="">
+                        <input class="form-control" type="number" name="item3Price" id="item3Price" value="30">
                     </td>
                     <td>
-                        <input class="form-control"type="number" name="itme3Count" id="itme3Count" value="" onchange="changeFun()";>
+                        <input class="form-control"type="number" name="item3Count" id="item3Count" value="1" onchange="changeFun()";>
                     </td>
                     <td>
-                        <input class="form-control"type="number" name="itme3Total" id="itme3Total" value="">
+                        <input class="form-control"type="number" name="item3Total" id="item3Total" value="">
                     </td>
                 </tr>
 
-                <tr class="table-dark">
-                    <td>總計</td>
-                    <td colspan="2" class="align-middle" >
-                        
-                    </td>
-                    
-                    <td>
-                        <button type="button" class="btn btn-success" onclick="sum();">500/8折</button>
-                    </td>
-                </tr>
             </tbody>
+            <tr class="table-dark">
+                <td>總計</td>
+                <td colspan="2" class="align-middle" >
+                    <span id="resultS"></span>
+                </td>
+                
+                <td>
+                    <button type="button" class="btn btn-success" onclick="sum();">500/8折</button>
+                </td>
+            </tr>
         </table>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         //sum
-        function name(params) {
-            
+        function sum() {
+            let item1TotalValue = Number(item1Total.value);
+            let item2TotalValue = Number(item2Total.value);
+            let item3TotalValue = Number(item3Total.value);
+            let sum = item1TotalValue + item2TotalValue + item3TotalValue;
+            let str = `
+                ${item1TotalValue} + ${item2TotalValue} + ${item3TotalValue} = ${sum}
+            `;
+            resultS.textContent = str;
         }
 
         //change
         function changeFun() {
             console.log('ok');
-            let itme1PriceValue =Number(itme1Price.value);
-            let itme1CountValue =Number(itme1Count.value);
-            let itme1TotalValue =itme1PriceValue *itme1CountValue;
-            itme1Total.value=itme1TotalValue;
+            let item1PriceValue =Number(item1Price.value);
+            let item1CountValue =Number(item1Count.value);
+            let item1TotalValue =item1PriceValue *item1CountValue;
+            item1Total.value=item1TotalValue;
 
-            let itme2PriceValue =Number(itme2Price.value);
-            let itme2CountValue =Number(itme2Count.value);
-            let itme2TotalValue =itme2PriceValue *itme2CountValue;
-            itme2Total.value=itme2TotalValue;
+            let item2PriceValue =Number(item2Price.value);
+            let item2CountValue =Number(item2Count.value);
+            let item2TotalValue =item2PriceValue *item2CountValue;
+            item2Total.value=item2TotalValue;
 
-            let itme3PriceValue =Number(itme3Price.value);
-            let itme3CountValue =Number(itme3Count.value);
-            let itme3TotalValue =itme3PriceValue *itme3CountValue;
-            itme3Total.value=itme3TotalValue;
+            let item3PriceValue =Number(item3Price.value);
+            let item3CountValue =Number(item3Count.value);
+            let item3TotalValue =item3PriceValue *item3CountValue;
+            item3Total.value=item3TotalValue;
         }
         
         
         //綁定
-        const itme1Price=document.getElementById('itme1Price');
-        const itme1Count=document.getElementById('itme1Count');
-        const itme1Total=document.getElementById('itme1Total');
+        const item1Price=document.getElementById('item1Price');
+        const item1Count=document.getElementById('item1Count');
+        constitem1Total=document.getElementById('item1Total');
 
-        const itme2Price=document.getElementById('itme2Price');
-        const itme2Count=document.getElementById('itme2Count');
-        const itme2Total=document.getElementById('itme2Total');
+        const item2Price=document.getElementById('item2Price');
+        const item2Count=document.getElementById('item2Count');
+        const item2Total=document.getElementById('item2Total');
 
-        const itme3Price=document.getElementById('itme3Price');
-        const itme3Count=document.getElementById('itme3Count');
-        const itme3Total=document.getElementById('itme3Total');
+        const item3Price=document.getElementById('item3Price');
+        const item3Count=document.getElementById('item3Count');
+        const item3Total=document.getElementById('item3Total');
 
-        console.log('itme1Price',itme1Price);
-        console.log('itme1Count',itme1Count);
-        console.log('itme1Total',itme1Total);
+        const resultS = document.getElementById('resultS');
+
+        console.log('item1Price',item1Price);
+        console.log('item1Count',item1Count);
+        console.log('item1Total',item1Total);
+
+        changeFun();//一開始執行一次
     </script>
     
 
