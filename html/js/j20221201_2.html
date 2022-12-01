@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <Script>
+        // array
+        // key 很多個 變數 打包在一個大包包裡面
+        // php indexArr vs js arr
+        let myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        console.log('myArr', myArr);
+        console.log('myArr[0]', myArr[0]);
+        console.log('myArr[1]', myArr[1]);
+        console.log('myArr[2]', myArr[2]);
+
+        // for
+        for (let i = 0; i < myArr.length; i++) {
+            console.log('key',i);
+            console.log('value',myArr[i]);
+        }
+
+        // 練習
+        // sum
+        // myArr value 加總 
+        // for
+        let sum = 0;
+        for (let i = 0; i < myArr.length; i++) {
+            console.log('key',i);
+            console.log('value',myArr[i]);
+            console.log('before sum',sum);
+            sum += myArr[i];          
+            console.log('after sum',sum);
+        }
+        console.log('sum',sum);
+
+        // 基數 
+        // 練習
+        // sum
+        // myArr value 加總 1 3 5 7 9
+        // for
+        let sum1 = 0;
+        for (let i = 0; i < myArr.length; i++) {
+            if(i % 2 == 1){
+                // console.log('基數 =>',myArr[i]);
+                continue;//這次不做
+            }
+            console.log('key',i);
+            console.log('value',myArr[i]);
+            console.log('before sum1',sum1);
+            sum1 += myArr[i];            
+            console.log('after sum1',sum1);
+        }
+        console.log('sum1',sum1);
+    </Script>
+</body>
+</html>
