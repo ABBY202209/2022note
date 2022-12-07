@@ -7,9 +7,12 @@
             <div class='col-md-2'>人氣</div>
         </li>
         <?php
-        $all_news = "SELECT * FROM `news`";
-        $rows = $pdo->query($all_news)->fetchALL();
+        // $all_news = "SELECT * FROM `news`";
+        // $rows = $pdo->query($all_news)->fetchALL();
         
+        $rows=all('news'," ORDER by `top` desc,`readed` desc");
+        $hot=q("SELECT `id` FROM `news` ORDER BY `readed` desc")[0][0];
+
 
         foreach ($rows as $row) {
             echo "<li class='list-group-item list-group-item-action d-flex'>";
