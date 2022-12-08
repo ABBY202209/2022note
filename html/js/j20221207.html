@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo"></p>
+    <button type="button" id="myBtn">myBtn</button>
+    <button type="button" id="myBtn2">myBtn2</button>
+    <button type="button" id="myBtn3">myBtn3</button>
+
+    <script>
+        // 方法一
+        function myFun() {
+            document.getElementById("demo").innerHTML = "Hello World";
+        }
+        // myBtn.addEventListener(helloClick(), myFun);
+        myBtn.addEventListener("click", myFun);
+
+
+        //方法二
+        myBtn2.addEventListener("click", myFun);
+
+        //方法三 箭頭函示        
+        myBtn3.addEventListener("click", () => {
+            document.getElementById("demo").innerHTML = "Hello World 333";
+        });
+
+        // 方法四
+        let funVal = function funValFunction() {
+            console.log('funValFunction');
+        };
+        console.log('funVal', funVal);
+        funVal();
+
+        // 方法五 將方法四改成箭頭函式
+        let funVal2 = () => {
+            console.log('funValFunction 222');
+        };
+        console.log('funVal2', funVal2);
+        funVal2();
+
+
+        // 1.myFun 代表整個function
+        // 2.myFun() 呼叫function
+
+        // 公司發年終
+        // employee = [3,4,5,6,7];
+        // ex1.發兩個月總共要發多少呢
+        // ex2.每個人都發兩個月 但領五萬的是傑出員工 四個 總共要發多少?
+        let employeeArr = [3, 4, 5, 6, 7]; //宣告一個陣列
+        let employeeBonusArr = employeeArr.map((value, key) => { // map 將回傳值變成一個新的陣列，但不影響原始的
+            if (value == 5) {
+                return value * 4;
+            } else {
+                return value * 2;
+            }
+        });
+        console.log(employeeBonusArr);
+
+        // reduce 加總
+        // total initValue 最原始的值
+        // value currentValue
+        let i = 0;
+        let sum = employeeBonusArr.reduce((total, value) => { //reduce(原本的值,加總的值)
+            i++;
+            console.log('i', i);
+            console.log('total', total);
+            console.log('value', value);
+            return total + value;
+        }, 100);//,100設定初始值
+        console.log('sum', sum);
+
+        // filter 塞選資料
+        let employeeArrFilter = employeeArr.filter((value) => {
+            return value < 5;
+        })
+        // 工程師不會通靈
+        console.log('employeeArr', employeeArr);
+        console.log('employeeArrFilter', employeeArrFilter);
+
+        // foreach
+        employeeArr = [3, 4, 5, 6, 7];
+        // 發獎金 2 倍
+        let bonusArr = [];
+        employeeArr.forEach((value, key) => {
+            let newValue = value * 2; //兩倍獎金
+            bonusArr.push(newValue);
+            // bonusArr.push(value*2);
+        });
+
+        console.log('bonusArr', bonusArr);
+        // 加總
+        let sumValue = 100; //初始值100
+        bonusArr.forEach((value, key) => {
+            sumValue += value;
+        })
+
+        console.log('sumValue', sumValue);
+
+
+        //篩選、快篩
+        let filterArr = [];
+        bonusArr.forEach((value, key) => {
+            if (value > 10) {
+                filterArr.push(value);
+            }
+        });
+        console.log("filterArr", filterArr);
+
+        //小練習
+        //選5個手機(name and price)
+        let myMobile = {
+            'i14 128': 25000,
+            'i14 256': 30000,
+            'i14 512': 35000,
+            'i14 1T': 40000,
+            'i14 2T': 45000,
+
+        }
+        console.log('myMobile', myMobile);
+        
+        //多維obj[{},{}]
+        let multiMobileArr = [
+            {
+                'name':'i14 128',
+                'price':25000,
+                'location':['北','中','南']
+            },
+            {
+                'name':'i14 256',
+                'price':30000,
+            },
+            {
+               'name':'i14 512',
+                'price':35000,
+            },
+            {
+                'name':'i14 1t',
+                'price':40000,
+            }
+        ]
+        
+        console.log('multiMobileArr', multiMobileArr);
+
+        //foreach
+        multiMobileArr.forEach((value,key)=>{
+            console.log(`${key}=>`,value);
+            console.log('value.price=>',value.price);
+            sum += value.price;
+        });
+
+        console.log(sum);
+
+        //object {{},{},{}}
+        let myObj2 = {
+            'obj1' : {
+                'name':'i14 128',
+                'price':25000,
+                'location':['北','中','南']
+            },
+        
+            'obj2' : {
+                'name':'i14 256',
+                'price':30000,
+                'location':['北','中','南']
+            },
+            'myFun':function(){
+                console.log('hello');
+            }
+        }
+        console.log('myObj2',myObj2);
+
+    </script>
+</body>
+
+</html>

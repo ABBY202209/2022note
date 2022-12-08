@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let obj = {
+            //變數 property
+            'name':'小名',
+            'age':18,
+            'chinese': 70,
+            'english': 80,
+            'math': 90,
+            //方法 method
+            'sumFun':function () { //在function用this指向上一層obj (相對位置) 
+                //箭頭函式無法使用this指向(會指向外部的window)，可用obj來指向
+                let sum = this.chinese + this.english + this.math;
+                console.log('sum =>' ,sum);
+                return sum;
+                // console.log('hello');
+                // console.log('this.name'.this.name);
+
+            },
+            'avgFun':function(){
+                let result = this.sumFun();
+                let avg = result / 3;
+                console.log('${result} / 3 =>',avg);
+            }
+        }
+
+        console.log('obj',obj);
+        // obj.name;
+        console.log('obj.name',obj.name);
+        obj.age;
+        console.log('obj.age',obj.age);
+        obj.sumFun();
+        obj.avgFun();
+
+    </script>
+</body>
+</html>

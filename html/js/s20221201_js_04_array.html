@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <script>
+        // 
+        let myArr = [1,2,3,4,5,6,7,8,9,10];
+        // *2 ?
+
+        // newArr
+        let newArr = []
+        myArr.forEach((value,key) => {
+            newArr.push(value*2);
+        });
+
+        // 練習
+        // 1-10 萬薪水 , 6萬以下的人 薪水x2
+        // new2Arr myArr[value] value < 6  
+        // new2Arr = [new2value * 3,new2value * 3,new2value * 3,.....]
+        
+        let new2Arr = []//宣告變數
+        myArr.forEach((value,key) => {
+            if(value <= 6){
+                new2Arr.push(value*2);            
+            }else{
+                new2Arr.push(value);            
+            }
+        });
+
+        console.log('myArr',myArr);
+        console.log('newArr',newArr);
+        console.log('new2Arr',new2Arr);
+        
+        // map 不須要宣告變數
+        let mapArr = myArr.map((value,index) => {
+            if(value <= 6){
+                return value*3;
+            }else{
+                return value;
+            }
+        });
+        console.log('myArr',myArr);
+        console.log('mapArr',mapArr);
+
+    </script>
+
+</body>
+
+</html>
