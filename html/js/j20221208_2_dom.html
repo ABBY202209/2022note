@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <h1 id="myh1">dom</h1>
+    <p>document object model(文件物件模型)
+
+        bom(window)->document(dom)->
+    </p>
+
+    <button type="button" onclick="appendFun();">myBtn appendChild dom</button>
+    <button type="button" onclick="removeFun();">del</button>
+    <button onclick="replaceFun()">replace</button>
+    <div id="myDiv">
+        <!-- green p tag 丟進來 -->
+
+    </div>
+
+    <script>
+        const myh1 = document.getElementById('myh1');
+        console.log(myh1);
+        myh1.innerText = '123';
+        myh1.innerHTML = '<strong>imperative</strong>';
+
+        
+        //建立create p ;放function內可重覆建立
+        //createElement('p')
+        const greenP = document.createElement('p');
+        greenP.textContent = 'hello';
+        greenP.style.color = 'green';
+        console.log('greenP', greenP);
+
+        //丟到指定的位置
+         const myDiv = document.getElementById('myDiv');
+
+         let text = 1;
+        function appendFun() {
+            // 建立create p
+            // createElement('p')
+            const greenP = document.createElement('p');
+            greenP.textContent = 'hello :))' + text;
+            text++;
+            greenP.style.color = 'green';
+            console.log('greenP', greenP);
+
+            console.log('appendFun ok');
+            myDiv.appendChild(greenP);//把元件放進去
+        }
+
+        //刪除節點
+        //remove
+        //removeChild 子節點
+        function removeFun() {
+            //找出節點
+            
+            const myP =document.querySelectorAll('#myDiv>p');
+            console.log(myP);
+            myP[0].remove();//刪除指定的節點
+            
+            //刪除子節點
+            myDiv.removeChild(myDiv.firstElementChild);//刪除第一個
+            myDiv.removeChild(myDiv.lastElementChild);//刪除最後一個
+            
+        }
+
+        //修改節點
+        //replace
+        function replaceFun() {
+            myDiv.lastElementChild.textContent='replace';
+        }
+
+        //create a "li" emement :
+        // const newNode =document.createElement("li");
+        //create a text node:
+        //Append text ndoe to "li" Element:
+
+        //insert before existing child
+        const mynode =document.createElement('li');
+        const list =document.getElementById('mylist');
+        const li =document.getElementById('myli');
+
+        //增加一個文字結點
+        //append放在裡面
+        const textnode =document.createTextNode('water');
+        mynode.appendChild(textnode);
+        //insertBefore(增加的節點，位置)
+
+        list.insertBefore(mynode,li);
+
+    </script>
+</body>
+
+</html>
