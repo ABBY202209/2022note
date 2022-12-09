@@ -163,6 +163,11 @@ function q($sql){
     return $pdo->query($sql)->fetchAll();
 }
 
+//header
+function to($location){
+    header()
+}
+
 
 
 
