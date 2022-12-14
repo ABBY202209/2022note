@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, quia culpa modi vel voluptatibus voluptates illum, dolores quaerat neque eum doloremque officiis suscipit totam qui odio dolorum. Exercitationem, non earum.</p>
+<body><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, quia culpa modi vel voluptatibus voluptates illum, dolores quaerat neque eum doloremque officiis suscipit totam qui odio dolorum. Exercitationem, non earum.</p>
+<body><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, quia culpa modi vel voluptatibus voluptates illum, dolores quaerat neque eum doloremque officiis suscipit totam qui odio dolorum. Exercitationem, non earum.</p>
+<body><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni, quia culpa modi vel voluptatibus voluptates illum, dolores quaerat neque eum doloremque officiis suscipit totam qui odio dolorum. Exercitationem, non earum.</p>
+    <button type="button" id="hideBtn">hide</button>
+    <button type="button" id="showBtn">show</button>
+    <button type="button" id="toggleBtn">toggle</button>
+
+    <br>
+    <button type="button" id="fadeInBtn">Fade in</button>
+    <button type="button" id="fadeOutBtn">Fade out</button>
+    <button type="button" id="fadeToggleBtn">Fade toggle</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+    integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        let itemNum=1;
+        $(function(){
+            $('#hideBtn').click(function(){
+                $('p').hide(2000,function(){
+                    // alert('123');
+                    console.log(itemNum);//次數
+                    itemNum++;
+
+                });//可支援時間(1000)=1秒;可支援alert()
+            })
+            $('#showBtn').click(function(){
+                $('p').show(1000);
+            })
+            $('#toggleBtn').click(function(){
+                $('p').toggle(5000);
+
+            })
+        })
+
+
+        $(function () {
+            //綁定,看習慣不一定要，但綁定效能比較好，只須要跑一次
+            const allp =$('p');
+            // 淡入 淡出
+            $('#fadeInBtn').click(function () {
+                $('p').fadeIn();
+            })
+            // event on('event',callback);
+            $('#fadeOutBtn').on('click',function () {
+                $('p').fadeOut();
+            })
+            $('#fadeToggleBtn').click(function () {
+                $('p').fadeToggle();
+            })
+
+        });
+
+
+    </script>
+</body>
+</html>

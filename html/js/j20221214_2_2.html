@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .box1 {
+            background-color: antiquewhite;
+            width: 100px;
+            height: 30px;
+        }
+
+        .box2 {
+            background-color: lightblue;
+            width: 100px;
+            height: 288px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>練習 select change animate</h3>
+    <select name="" id="">
+        <option value="1">hide</option>
+        <option value="2">fade in</option>
+        <option value="3">slide</option>
+    </select>
+    <div>
+
+    </div>
+    <div class="box1">hello</div>
+    <div class="box2">你好呀</div>
+
+    <button type="button" id="slideUpBtn">slideUpBtn</button>
+    <button type="button" id="slideDownBtn">slideDownBtn</button>
+    <button type="button" id="slideToggleBtn">slideToggleBtn</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // $(function () {
+        //     $('.box1').click(function () {
+        //         // $('.box2').slideUp();//使用button
+        //         $('.box2').slideToggle();//使用點擊物件
+        //     });
+        //     $('#slideUpBtn').click(function () {
+        //         $('.box2').slideUp();
+        //     })
+        //     $('#slideDownBtn').click(function () {
+        //         $('.box2').slideDown();
+        //     })
+        //     $('#slideToggleBtn').click(function () {
+        //         $('.box2').slideToggle();
+        //     })
+        // })
+
+        // let getHeight = $('body').height();//抓高度
+        // console.log('height', getHeight);
+
+        // 練習 select
+        // 1. hide show toggle
+        // 2. fade in fade out toggle
+        // 3. slide up / slide down toggle
+        // box1 => click
+        // box2
+
+        $(function () {
+            // 1.get select value
+            // let getSelectVal = $('select').val();
+            // console.log(getSelectVal);
+            const box2 = $('.box2');
+
+            $('.box1').click(function () {
+                console.log('box1 ok');
+                let getSelectVal = Number($('select').val());//轉換
+                console.log('getSelectVal', getSelectVal);
+                console.log('typeof', typeof (getSelectVal));
+
+                switch (getSelectVal) {
+                    case 1:
+                        box2.toggle();
+                        box2.text('hide');
+                        break;
+                    case 2:
+                        box2.fadeToggle(1000);
+                        box2.text('fade');
+                        break;
+                    case 3:
+                        box2.slideToggle(2000);
+                        box2.text('slide');
+                        break;
+
+                    default:
+                        break;
+                }
+            });
+
+            })
+
+    </script>
+</body>
+
+</html>
