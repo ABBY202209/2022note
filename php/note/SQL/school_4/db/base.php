@@ -165,7 +165,7 @@ function q($sql){
 
 //header
 function to($location){
-    header()
+    header("location:$location");
 }
 
 
