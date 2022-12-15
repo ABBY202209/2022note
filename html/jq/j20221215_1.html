@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        .box1 {
+            background-color: antiquewhite;
+            width: 100%;
+            height: 30px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .box2 {
+            background-color: lightblue;
+            width: 100%;
+            height: 288px;
+            text-align: center;
+            overflow: scroll;
+            /* display: none; */
+           
+
+        }
+
+        .box3 {
+            background-color: antiquewhite;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        button {
+            margin: 10px;
+        }
+
+        p {
+            padding: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>練習 tabs</h3>
+    
+    </div>
+    <div class="box1">hello</div>
+    <div class="box2">你好呀
+        <p id="data-text1">
+            <img src="https://picsum.photos/id/1/200/200" alt="" width="100px">
+            1111 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus iusto culpa vel harum quibusdam
+            quidem quos perspiciatis earum voluptas. Quia quod facilis quisquam consequatur earum ratione explicabo
+            distinctio, suscipit maiores cum, laborum repudiandae sapiente aut consectetur est voluptates! Culpa ratione
+            amet cum voluptas doloribus aut dolores quidem voluptate libero impedit vel minima eveniet modi, dignissimos
+            tempore sunt corporis reiciendis asperiores, odio expedita illum ad quae tenetur repellendus. Eligendi
+            possimus, nam doloribus similique veniam soluta voluptatem esse sed incidunt culpa atque cupiditate fugit
+            impedit sequi, non officiis delectus blanditiis deleniti quam ex! Sed, perspiciatis doloremque. Nam in
+            laboriosam numquam possimus molestiae.
+        </p>
+        <p id="data-text2">
+            2222 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus iusto culpa vel harum quibusdam
+            quidem quos perspiciatis earum voluptas. Quia quod facilis quisquam consequatur earum ratione explicabo
+            distinctio, suscipit maiores cum, laborum repudiandae sapiente aut consectetur est voluptates! Culpa ratione
+            amet cum voluptas doloribus aut dolores quidem voluptate libero impedit vel minima eveniet modi, dignissimos
+            tempore sunt corporis reiciendis asperiores, odio expedita illum ad quae tenetur repellendus. Eligendi
+            possimus, nam doloribus similique veniam soluta voluptatem esse sed incidunt culpa atque cupiditate fugit
+            impedit sequi, non officiis delectus blanditiis deleniti quam ex! Sed, perspiciatis doloremque. Nam in
+            laboriosam numquam possimus molestiae.</p>
+        <p id="data-text3">
+            3333 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus iusto culpa vel harum quibusdam
+            quidem quos perspiciatis earum voluptas. Quia quod facilis quisquam consequatur earum ratione explicabo
+            distinctio, suscipit maiores cum, laborum repudiandae sapiente aut consectetur est voluptates! Culpa ratione
+            amet cum voluptas doloribus aut dolores quidem voluptate libero impedit vel minima eveniet modi, dignissimos
+            tempore sunt corporis reiciendis asperiores, odio expedita illum ad quae tenetur repellendus. Eligendi
+            possimus, nam doloribus similique veniam soluta voluptatem esse sed incidunt culpa atque cupiditate fugit
+            impedit sequi, non officiis delectus blanditiis deleniti quam ex! Sed, perspiciatis doloremque. Nam in
+            laboriosam numquam possimus molestiae.</p>
+        <p id="data-text4">
+            4444 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus iusto culpa vel harum quibusdam
+            quidem quos perspiciatis earum voluptas. Quia quod facilis quisquam consequatur earum ratione explicabo
+            distinctio, suscipit maiores cum, laborum repudiandae sapiente aut consectetur est voluptates! Culpa ratione
+            amet cum voluptas doloribus aut dolores quidem voluptate libero impedit vel minima eveniet modi, dignissimos
+            tempore sunt corporis reiciendis asperiores, odio expedita illum ad quae tenetur repellendus. Eligendi
+            possimus, nam doloribus similique veniam soluta voluptatem esse sed incidunt culpa atque cupiditate fugit
+            impedit sequi, non officiis delectus blanditiis deleniti quam ex! Sed, perspiciatis doloremque. Nam in
+            laboriosam numquam possimus molestiae.</p>
+    </div>
+    <div class="box3">
+        <button type="button" id="tab1" class="myBtn" data-text="data-text1">tab1</button>
+        <button type="button" id="tab2" class="myBtn" data-text="data-text2">tab2</button>
+        <button type="button" id="tab3" class="myBtn" data-text="data-text3">tab3</button>
+        <button type="button" id="tab4" class="myBtn" data-text="data-text4">tab4</button>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // text or html 
+        // input => val
+
+        $(function () {
+
+            //綁定
+            const tab1 = $('#tab1');
+            const tab2 = $('#tab2');
+            const tab3 = $('#tab3');
+            const tab4 = $('#tab4');
+            const box2 = $('.box2');
+            const allP = $('.box2>p');
+            const myBtn = $('.myBtn');
+            console.log('allP', allP);
+            console.log('tab1', tab1);
+
+
+            // tab1.click(function () {
+            myBtn.click(function () {
+                // box2.text('11111');
+                let getData = $(this).data('text');
+                box2.show();
+                allP.hide();
+                // allP.eq(0).slideDown();
+
+                $(`#${getData}`).slideDown();//` js字串組成;# id;getData 取出data
+                console.log('getData', getData);
+            });
+
+            let getTab1Data = tab1.data('text');
+            console.log('getTab1Data', getTab1Data);
+
+            // tab2.click(function () {
+            //     // box2.text('2222');
+            //     allP.hide();
+            //     allP.eq(1).slideDown();
+            // });
+
+            // tab3.click(function () {
+            //     // box2.text('3333');
+            //     allP.hide();
+            //     allP.eq(2).slideDown();
+            // });
+
+            // tab4.click(function () {
+            //     // box2.text('4444');
+            //     allP.hide();
+            //     allP.eq(3).slideDown(2000);
+            // });
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>

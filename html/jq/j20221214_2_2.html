@@ -76,26 +76,31 @@
             // 1.get select value
             // let getSelectVal = $('select').val();
             // console.log(getSelectVal);
+            
+            //綁定
             const box2 = $('.box2');
 
+            //點擊box1時，依select值來決定box2顯示的方式
             $('.box1').click(function () {
                 console.log('box1 ok');
                 let getSelectVal = Number($('select').val());//轉換
                 console.log('getSelectVal', getSelectVal);
                 console.log('typeof', typeof (getSelectVal));
 
+                //判斷式 switch
                 switch (getSelectVal) {
+                    //動作
                     case 1:
                         box2.toggle();
-                        box2.text('hide');
+                        box2.text('hide');//隱藏顯示
                         break;
                     case 2:
-                        box2.fadeToggle(1000);
-                        box2.text('fade');
+                        box2.fadeToggle(1000);//()內可指定秒數
+                        box2.text('fade');//淡入淡出
                         break;
                     case 3:
                         box2.slideToggle(2000);
-                        box2.text('slide');
+                        box2.text('slide');//滑動
                         break;
 
                     default:

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <h3 id="myH3">hello jquery</h3>
     <p data-price="100">1.Lorem ipsum dolor sit amet.</p>
     <p data-price="100">2.Lorem ipsum dolor sit amet.</p>
     <p data-price="100">3.Lorem ipsum dolor sit amet.</p>
@@ -27,13 +28,32 @@
     <p>
         <input type="text" name="" id="">
     </p>
-
-
+    <button id="start">Start Animation</button>
+    <button id="stop">Stop Animation</button>
+    <br><br>
+    
+    <div style="background:red;height:100px;width:100px;"></div>
+     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
         integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
+
+        $(function () {
+            // js
+            const myH3Js = document.getElementById('myH3');
+            // jq 的 mathod 只能用來操作JQ的物件
+            const myH3Jq = $('#myH3');
+            console.log('myH3Js', myH3Js);
+            console.log('myH3Jq', myH3Jq);
+            // $('#myH3')
+            // $('#myH3').text('12345');
+            // $('#myH3').css('color','red');
+            // myH3Js.css('color','red');;//把jq的方法用在js的物件時
+            myH3Jq.css('color', 'red');;
+
+        });
         // const allP = document.querySelectorAll('p');
         // console.log(allP);
         // allP.forEach(element => {
@@ -44,7 +64,7 @@
         //     })
         // });
         // $(function(){
-            
+
         //     $('p').click(function(){
         //         // hide() jquery method
         //         $(this).hide();
@@ -61,16 +81,16 @@
         //         // $('p').eq(num).remove();
         //         $('p').eq(0).remove();
         //         // $('p:last').remove();
-                
+
         //         // $('p').hide();
         //     });
 
         //     // 小練習 按下button 一次只消失一個p
-            
+
         // });
 
 
-        
+
         $(function () {
             // focus 進入
             $('input').focus(function () {
@@ -88,6 +108,19 @@
             });
 
 
+        });
+
+        //原生動畫的方法
+        $(document).ready(function () {
+            $("#start").click(function () {
+                $("div").animate({ height: 300 }, 1500);
+                $("div").animate({ width: 300 }, 1500);
+                $("div").animate({ height: 100 }, 1500);
+                $("div").animate({ width: 100 }, 1500);
+            });
+            $("#stop").click(function () {
+                $("div").clearQueue();
+            });
         });
     </script>
 </body>
