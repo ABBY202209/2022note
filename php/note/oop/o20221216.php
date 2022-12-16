@@ -1,6 +1,7 @@
 <h1>物件導向</h1>
 <a href="./static.php">靜態</a>
 <a href="./chaining.php">靜態</a>
+<a href="./base.php">base</a>
 <hr>
 <?php
 
