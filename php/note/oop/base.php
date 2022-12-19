@@ -45,9 +45,20 @@ max
 min
 avg 平均
 */
-echo $Student->count(['dept'=>2]);//可以指定
+// echo $Student->count(['dept'=>2]);//可以指定
 // echo $Student->count('*'); //*非變數，只是代表一個值
+echo  $Student->sum("graduate_at", ['dept' => 2]);
+echo "<hr>";
+$Score = new DB("student_scores");
+echo $Score->max('score');
+echo "<hr>";
+echo $Score->min('score');
+echo "<hr>";
+echo $Score->avg('score');
+echo "<hr>";
 
+$rows=Q("select * from `dept` order by id dese");
+dd($rows);
 
 class DB
 { //先宣告一個db的類別
@@ -100,7 +111,7 @@ class DB
 
         if (is_array($id)) {
             foreach ($id as $key => $value) {
-                $tmp[] = "`$key`='$value'";//將$tmp轉成key $value
+                $tmp[] = "`$key`='$value'"; //將$tmp轉成key $value
             }
 
             $sql = $sql . " where " . join(" && ", $tmp);
@@ -176,37 +187,123 @@ class DB
         }
     }
 
-    function count($arg){
-        if (is_array($arg)) {
+    function count(...$arg)
+    { //寫成不定參數，可不給條件
+        if (isset($arg)) { //有可能是空值，用isset
             # code...
-            foreach($arg as $key =>$value){
-                $tmp[]="`$key`='$value'";
+            foreach ($arg as $key => $value) {
+                $tmp[] = "`$key`='$value'";
             }
             $sql = "select count(*) from $this->table where";
-            $sql.=join(" && ",$tmp);
-
-        }else{
-            $sql="select count($arg) from $this->table";
+            $sql .= join(" && ", $tmp);
+        } else {
+            $sql = "select count($arg) from $this->table";
         }
         echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
     }
 
     //sum 須要給2個以上的欄位
-    function sum($col,...$arg){//...不定參數
-        if (isset($arg[0])) {
-            # code...
-            foreach($arg as $key =>$value){
-                $tmp[]="`$key`='$value'";
-            }
-            $sql = "select sum($col) from $this->table where";
-            $sql.=join(" && ",$tmp);
-            
-        }else{
-            $sql="select sum($col) from $this->table";
-        }
+    function sum($col, ...$arg)
+    { //...不定參數
+        // if (isset($arg[0])) {
+        //     # code...
+        //     foreach($arg as $key =>$value){
+        //         $tmp[]="`$key`='$value'";
+        //     }
+        //     $sql = "select sum($col) from $this->table where";
+        //     $sql.=join(" && ",$tmp);
+
+        // }else{
+        //     $sql="select sum($col) from $this->table";
+        // }
+        //將上面簡化成下面一行
+        $sql = $this->mathSql('sum', $col, $arg[0]);
+        echo $sql;
+        // return $this->pdo->query($sql)->fetchColumn();
+    }
+
+    //與sum相同
+    function max($col, ...$arg)
+    {
+        // if (isset($arg[0])) {
+        //     foreach ($arg[0] as $key => $value) {
+        //         $tmp[] = "`$key`='$value'";
+        //     }
+        //     $sql = "select max($col) from $this->table where ";
+        //     $sql .= join(" && ", $tmp);
+        // } else {
+
+        //     $sql = "select max($col) from $this->table";
+        // }
+        $sql = $this->mathSql('max', $col, $arg[0]);
+
         echo $sql;
         return $this->pdo->query($sql)->fetchColumn();
+    }
+
+    //與sum相同
+    function min($col, ...$arg)
+    {
+        // if (isset($arg[0])) {
+        //     foreach ($arg[0] as $key => $value) {
+        //         $tmp[] = "`$key`='$value'";
+        //     }
+        //     $sql = "select min($col) from $this->table where ";
+        //     $sql .= join(" && ", $tmp);
+        // } else {
+
+        //     $sql = "select min($col) from $this->table";
+        // }
+        $sql = $this->mathSql('min', $col, $arg[0]);
+
+        echo $sql;
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+    //與sum相同
+    function avg($col, ...$arg)
+    {
+        // if(isset($arg[0])){
+        //     foreach($arg[0] as $key => $value){
+        //         $tmp[]="`$key`='$value'";
+        //     }
+        //     $sql="select avg($col) from $this->table where ";
+        //     $sql.=join(" && ",$tmp);
+        // }else{
+
+        //     $sql="select avg($col) from $this->table";
+        // }
+        $sql = $this->mathSql('avg', $col, $arg[0]);
+
+
+        echo $sql;
+        return $this->pdo->query($sql)->fetchColumn();
+    }
+
+    //整合
+    private function mathSql($math, $col, ...$arg)
+    {
+        if (isset($arg[0][0])) {
+            # code...
+            foreach ($arg[0][0] as $key => $value) {
+                # code...
+                $tmp[] = "`$key`='$value'";
+            }
+            $sql = "select $math($col) from $this->table where ";
+            $sql .= join(" && ", $tmp);
+        } else {
+            $sql = "select avg($col) from $this->table";
+        }
+        echo $sql;
+        return $sql;
+    }
+    
+    private function arrayToSqlArray($array){
+        //dd($array);
+        foreach($array as $key => $value){
+            $tmp[]="`$key`='$value'";
+        }
+        return $tmp;
     }
 }
 
@@ -215,4 +312,16 @@ function dd($array)
     echo "<pre>";
     print_r($array);
     echo "</pre>";
+}
+
+//萬用sql
+function Q($sql)
+{
+    $dsn = "mysql:host=localhost;charser=utf8;dbname=school";
+    $pdo = new PDO($dsn, 'root', '');
+    return $pdo->query($sql)->fetchAll(); //變數只屬內部，重覆也沒關係
+}
+//header函式
+function to($location){
+    header("location:$location");
 }
