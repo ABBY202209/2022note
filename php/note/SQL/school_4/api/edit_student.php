@@ -6,6 +6,7 @@ print_r($_POST);
 echo "</pre>"; */
 $id=$_POST['id'];
 //建立變數接收表單傳送過來的資料
+//宣告變數
 $name=$_POST['name'];
 $birthday=$_POST['birthday'];
 $uni_id=$_POST['uni_id'];
@@ -15,7 +16,7 @@ $tel=$_POST['tel'];
 $dept=$_POST['dept'];
 $graduate_at=$_POST['graduate_at'];
 $status_code=$_POST['status_code'];
-
+//再設sql語法
 $sql_students="UPDATE `students` 
       SET `name`='$name',
           `birthday`='$birthday' ,
