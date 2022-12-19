@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 一般的寫前面，特殊的寫後面 */
+.list-students{
+    border-collapse:separate;/*collapse相鄰處共享邊框;separate各自擁有各自邊*/
+   
+}
+.list-students td{
+    border:1px solid #aaa;
+    padding:5px 10px;/*padding內邊距上下5px 左右10px;上 左右 下;上 右 下 左*/
+    text-align: center;
+}
+.list-students td:nth-last-child(1){/*從後面數來第1個*/
+    text-align: right;
+}
+
+nav a{
+    display:inline-block;
+    padding:5px 10px;
+    text-decoration: none;
+}
+nav a:hover{
+    display:inline-block;
+    padding:5px 10px;
+    text-decoration: underline;
+}
