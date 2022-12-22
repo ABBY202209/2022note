@@ -29,8 +29,10 @@
         li {
             width: 80%;
             height: 80%;
-            border: 1px red solid;
+            border: 1px antiquewhite solid;
             margin-top: 20px;
+            
+            
         }
     </style>
 </head>
@@ -40,14 +42,14 @@
     <div>
         A
         <!-- ul 老師 php-->
-        <ul> a
+        <ul id="1"> a
             <li>amy</li>
             <li>bob</li>
             <li>cat</li>
         </ul>
 
         <!-- ul 老師 js-->
-        <ul> b
+        <ul id="2"> b
             <li>dog</li>
             <li>egg</li>
             <li>fox</li>
@@ -117,35 +119,50 @@
                 console.log(this);
                 // this <li> <li> 
 
+                //init 清除顏色
+                student.css('background-color', '');
+                $(this).parent().parent().find('ul').css('background-color', '');
+
                 // 練習一
                 // li click li 變藍色
-                student.css('background-color', '');//init 清除顏色
-                $(this).parent().parent().find('ul').css('background-color','');
                 // studentParentParent.find('ul').css('background-color','clear');
                 $(this).css('background-color', 'cornflowerblue');
                 console.log('$(this)', $(this));
                 // 練習二
                 // li click li 變藍色
                 // li parent 變粉紅色
-                 $(this).parent().css('background-color', 'pink');
-                 console.log('$(this).parent()', $(this).parent());
+                $(this).parent().css('background-color', 'pink');
+                console.log('$(this).parent()', $(this).parent());
+                // 練習三
+                // li click li 變藍色
+                // li parent 變粉紅色
+                // li parent parent 變綠色
+                $(this).parent().parent().css('background-color', 'green');
+                console.log('$(this).parent().parent()', $(this).parent());
+                // 練習四
+                // li click li 變藍色
+                // li parent 變粉紅色
+                // li parent parent 變綠色
+                // 把另外一個ul 變成紅色
+                console.log('li index',$(this).index());
+                console.log('ul li index',$(this).parent().index());
+                let getIndex = $(this).parent().index();
+                console.log('getindex',getIndex);
 
+                console.log('ul not(eq)',$(this).parent().parent().find('ul').not(`:eq(${getIndex})`));
+                let allUl = $(this).parent().parent().find('ul');
+                console.log('allUl[0]',allUl[0]); //eq(0)
+                console.log('allUl[1]',allUl[1]); //eq(1)
+                $(this).parent().parent().find('ul').not(allUl[`${getIndex}`]).css('background-color','red');
 
             });
 
 
 
-         
-            // 練習三
-            // li click li 變藍色
-            // li parent 變粉紅色
-            // li parent parent 變綠色
 
-            // 練習四
-            // li click li 變藍色
-            // li parent 變粉紅色
-            // li parent parent 變綠色
-            // 把另外一個ul 變成紅色
+
+
+
 
         });
 
