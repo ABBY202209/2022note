@@ -1,18 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        div {
+            width: 80%;
+            height: 80%;
+            border: 1px green solid;
+            /* text-align: center; */
+            margin: auto;
+            margin-top: 30px;
+            /* background-color: cornflowerblue; */
+        }
+
+        ul {
+            width: 80%;
+            height: 80%;
+            border: 1px blue solid;
+            margin: auto;
+            margin-top: 30px;
+            /* background-color: lightskyblue; */
+        }
+
+        li {
+            width: 80%;
+            height: 80%;
+            border: 1px red solid;
+            margin-top: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!-- div 校長 -->
+    <div>
+        A
+        <!-- ul 老師 php-->
+        <ul> a
+            <li>amy</li>
+            <li>bob</li>
+            <li>cat</li>
+        </ul>
+
+        <!-- ul 老師 js-->
+        <ul> b
+            <li>dog</li>
+            <li>egg</li>
+            <li>fox</li>
+        </ul>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
         integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //JS用 ">"
+
+        $(function () {
+
+            // 校長
+            // $('div').css('color','yellow');
+            // console.log("$('div')",$('div'));
+
+
+            // 老師
+            // $('div>ul').eq(0).css('color','pink');
+            // $('div>ul').eq(1).css('color','blue');
+            // console.log('$("div>ul")', $('div>ul'));
+            // console.log('$("div>ul").eq(0)', $('div>ul').eq(0));
+            // console.log('$("div>ul").eq(1)', $('div>ul').eq(1));
+
+            // 學生
+            // $('div>ul>li').eq(0).css('color','red');
+            // $('div>ul>li').eq(1).css('color','green');
+            // $('div>ul>li').eq(2).css('color','blue');
+            // $('div>ul>li').eq(3).css('color','orange');
+            // $('div>ul>li').eq(4).css('color','purple');
+
+            // ex 只知道校長
+            // 找老師
+            // const head = $('div');
+            // const teacher = head.find('ul');
+
+            // jQuery Traversing - Descendants
+            // 後代選擇器
+            // find('選擇器') 找一層
+            // children() 找下一層
+            // children().children 找下二層
+            // const teacher = head.children();
+
+            // 找學生
+            // const student = teacher.find('li');
+            // teacher.css('background-color','lightpink');
+            // teacher.eq(0).css('background-color','lightpink');
+            // teacher.eq(1).css('background-color','lightpink');
+            // student.css('background-color','lightskyblue');
+
+            // 知道學生 找上幾代
+            // jQuery Traversing - Ancestors
+            // 祖先選擇器 父母類別
+            const student = $('li');
+            const studentParent = $('li').first().parent();
+            const studentParentParent = $('li').first().parent().parent();
+            console.log('student', student);
+            console.log('studentParent', studentParent);
+            console.log('studentParentParent', studentParentParent);
+
+            student.click(function () {
+                console.log(this);
+                // this <li> <li> 
+
+                // 練習一
+                // li click li 變藍色
+                student.css('background-color', '');//init 清除顏色
+                $(this).parent().parent().find('ul').css('background-color','');
+                // studentParentParent.find('ul').css('background-color','clear');
+                $(this).css('background-color', 'cornflowerblue');
+                console.log('$(this)', $(this));
+                // 練習二
+                // li click li 變藍色
+                // li parent 變粉紅色
+                 $(this).parent().css('background-color', 'pink');
+                 console.log('$(this).parent()', $(this).parent());
+
+
+            });
+
+
+
+         
+            // 練習三
+            // li click li 變藍色
+            // li parent 變粉紅色
+            // li parent parent 變綠色
+
+            // 練習四
+            // li click li 變藍色
+            // li parent 變粉紅色
+            // li parent parent 變綠色
+            // 把另外一個ul 變成紅色
+
+        });
+
+    </script>
+
 </body>
+
 </html>
