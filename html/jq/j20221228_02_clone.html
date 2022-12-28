@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid brown;
+            height: 300px;
+        }
+
+        div {
+            color: blue;
+            border: 1px solid coral;
+        }
+
+        p {
+            color: green;
+            border: 1px solid yellowgreen;
+        }
+
+        div>button {
+            border: 1px solid peru;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="myH1">clone</h1>
+    <div id="myDiv">
+        <button type="button">myclone</button>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //綁定
+            const myBtn=$('button');
+            const myH1=$('.myH1');
+            //抓選擇器
+            
+            //clone只會複製，要記得指定放置位置
+            myBtn.click(function(){
+                console.log('myBtn ok');
+                //方法一 抓最後一個.clone.放置位置;
+                $(myH1).last().clone().insertBefore("#myDiv");;
+
+                //方法二 位置.append(資料)
+                cloneData = $(myH1).last().clone();
+                // $('#myDiv').prepend(cloneData);
+                // 
+            })
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>

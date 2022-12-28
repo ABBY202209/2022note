@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="text-center">input crud</h1>
+    <div class="contaianer mt-5">
+        <form action="">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">age</th>
+                        <th scope="col">tel</th>
+                        <th scope="col">動作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>amy</td>
+                        <td>19</td>
+                        <td>0800</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">edit</button>
+                            <button type="button" class="btn btn-danger my-del">del</button>
+                            <button type="button" class="btn btn-primary my-copy">copy</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>bob</td>
+                        <td>19</td>
+                        <td>0909</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">edit</button>
+                            <button type="button" class="btn btn-danger my-del">del</button>
+                            <button type="button" class="btn btn-primary my-copy">copy</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>cat</td>
+                        <td>20</td>
+                        <td>02-</td>
+                        <td>
+                            <button type="button" class="btn btn-warning">edit</button>
+                            <button type="button" class="btn btn-danger my-del">del</button>
+                            <button type="button" class="btn btn-primary my-copy">copy</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            //綁定
+            const copyBtn=$('.my-copy');
+            const delBtn = $('.my-del');
+            const clearBtn = $('.my-clear');
+            copyBtn.click(function(){
+                console.log('copyBtn ok');
+                const trData=$(this).parent().parent().clone(true);//放true event事件才會clone
+                $('tbody').append(trData);
+            });
+            delBtn.click(function () {
+                const getTr = $(this).parent().parent();
+                let getTrNum = $('tbody > tr').length;
+                console.log('getTrNum', getTrNum);
+                if (getTrNum > 1) {
+                    getTr.remove();
+                }
+
+            })
+            clearBtn.click(function(){
+                const getTr = $(this).parent().parent();//抓tr
+                const getInput =getTr.find('input');
+                getInput.val("");//清空
+                //setVal val
+                //getVal val
+
+            })
+            addBtn.click(function(){
+                let addData=
+                $('tbody').append('addData');//加在最後面
+
+            })
+
+        });
+    </script>
+</body>
+</html>

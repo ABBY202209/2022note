@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            color: blue;
+        }
+
+        p {
+            color: green;
+        }
+
+        ul {
+            color: brown;
+        }
+
+        li {
+            color: deeppink
+        }
+    </style>
+</head>
+
+<body>
+    <h2>after</h2>
+    <div id="myDiv">
+        hello div
+        <p>
+            hello p
+        </p>
+    </div>
+    <ul id="myUl">
+        helo ul
+        <li>
+            hello li
+        </li>
+    </ul>
+
+    <input type="button" value="myBtn" id="myBtn">
+    <input type="button" value="myUl" id="myUlBtn">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //綁定
+            const myBtn = $('#myBtn');
+            const myDiv = $('#myDiv');
+            const myUl = $('#myUl');
+            const myUlBtn = $('#myUlBtn');
+            console.log(myBtn);
+            //myBtn 觸擊
+            let i = 0;
+            myBtn.click(function () {
+                console.log('myBtn ok');
+                i++;
+                $(selector).after(content);
+
+                //after 5 4 3 2 1
+                // myDiv.after(`<div>hello after ${i}</div>`)
+                
+                // after 1 2 3 4 5
+                // let allLastDiv = $('div').not('.btnDiv').last();
+                // allLastDiv.after(`<div>hello after ${i}</div>`)
+            });
+            
+           
+
+        });
+
+
+    </script>
+</body>
+
+</html>

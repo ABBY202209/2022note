@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            color: blue;
+        }
+
+        p {
+            color: green;
+        }
+
+        ul {
+            color: brown;
+        }
+
+        li {
+            color: deeppink
+        }
+    </style>
+</head>
+
+<body>
+    <h2>appendto</h2>
+    <div id="myDiv">
+        hello div
+        <p>
+            hello p
+        </p>
+    </div>
+    <ul id="myUl">
+        helo ul
+        <li>
+            hello li
+        </li>
+    </ul>
+
+    <input type="button" value="myBtn" id="myBtn">
+    <input type="button" value="myUl" id="myUlBtn">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //綁定
+            const myBtn = $('#myBtn');
+            const myDiv = $('#myDiv');
+            const myUl = $('#myUl');
+            const myUlBtn = $('#myUlBtn');
+            console.log(myBtn);
+            //myBtn 觸擊
+            myBtn.click(function () {
+                console.log('myBtn ok');
+                // 將資料放在最後
+                //下面範例，55688會出現在整個myDiv之後
+                // myDiv.append('55688');//吃<div>的css
+                // myDiv.append('<p>55688</p>');//吃<p>的css
+                // $("<p>Test</p>").appendTo("#myDiv");//與append差別只在寫法，結果都一樣
+                //往前面丟
+                $('<p>55688</p>').prependTo('#myDiv');
+            });
+            //計數器
+            //設變數
+            let i = 0;
+            myUlBtn.click(function () {
+                console.log('myUlBtn ok');
+                i++;
+                myUl.append(`<li style="color:green">計數${i}</li>`);//吃<p>的css
+
+            });
+
+           
+
+        });
+
+
+    </script>
+</body>
+
+</html>

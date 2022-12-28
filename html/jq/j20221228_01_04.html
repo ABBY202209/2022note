@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            border: 1px solid brown;
+            height: 300px;
+        }
+
+        div {
+            color: blue;
+            border: 1px solid coral;
+        }
+
+        p {
+            color: green;
+            border: 1px solid yellowgreen;
+        }
+
+        div>button {
+            border: 1px solid peru;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-center">jQuery append relative project</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h2 class="text-center">append</h2>
+                <div class="parentDiv">
+123
+                </div>
+                <div>
+
+                    <button class="" data-method="append"type="button">btnAppend</button>
+                </div>
+            </div>
+            <div class="col-6">
+                <h2 class="text-center">prepend</h2>
+                <div class="parentDiv">
+                    123
+
+                </div>
+                <div>
+
+                    <button class="" data-method="prepend"type="button">btnPrepend</button>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <h2 class="text-center">after</h2>
+                <div class="parentDiv">
+                    123
+
+                </div>
+                <div>
+
+                    <button class="" data-method="after"type="button"> btnAfter</button>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <h2 class="text-center">before</h2>
+                <div class="parentDiv">
+                    123
+
+                </div>
+                <div>
+
+                    <button class="" data-method="before"type="button">btnBefore</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //相同的設function方式簡化程式
+            function sayHello(data) {
+                console.log(`hello ${data}`);
+            }
+
+            function dataPosition(data) {
+                console.log(`dataPosition ${data}`);
+            }
+
+            //綁定
+            //做活的，不綁id，使用$(this).parent.parent 抓button位置的上一層(div)的上一層的(container)
+            // .fine 篩選
+            const myBtn = $('button');
+            //myBtn 觸擊
+            myBtn.click(function () {
+                console.log('myBtn ok');
+                let parentDiv = $(this).parent().parent().find('.parentDiv');
+                console.log('parentDiv', parentDiv);
+                parentDiv.append('<p>hello append</p>')
+                //在button內設data-xxxx；xxx可隨便取
+                let getMethod = $(this).data('method');
+                console.log('getMethod', getMethod);
+                //
+                switch (getMethod) {
+                    case 'append':
+                        sayHello(getMethod);
+                        dataPosition('in');
+                        break;
+                    case 'prepend':
+                        sayHello(getMethod);
+                        dataPosition('in');
+                        break;
+                    case 'after':
+                        sayHello(getMethod);
+                        dataPosition('silbling')
+                        break;
+                    case 'before':
+                        sayHello(getMethod);
+                        dataPosition('silbling');
+                        break;
+
+                    default:
+                        break;
+                }
+
+            })
+
+
+
+
+
+
+
+            myBtn.click(function () {
+                console.log('myBtn ok');
+                let parentDiv = $(this).parent().parent().find('.prependDiv');
+                console.log('parentDiv', parentDiv);
+                parentDiv.prepend('<p>hello append</p>')
+            })
+            myBtn.click(function () {
+                console.log('myBtn ok');
+                let parentDiv = $(this).parent().parent().find('.AfterDiv');
+                console.log('parentDiv', parentDiv);
+                parentDiv.after('<p>hello append</p>')
+            })
+            myBtn.click(function () {
+                console.log('myBtn ok');
+                let parentDiv = $(this).parent().parent().find('.BeforeDiv');
+                console.log('parentDiv', parentDiv);
+                parentDiv.prepend('<p>hello append</p>')
+            })
+
+
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
