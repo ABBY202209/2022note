@@ -1,0 +1,42 @@
+/* #myPicAll{
+    width: 656px;
+    height: 437px;
+    background: url('../img/dogA.jpg');
+  } */
+  #myPic1{
+    width: 100px;
+    height: 200px;
+    background: url('../img/dogA.jpg');
+    background-position:-50px;
+  }
+  #myPic2{
+    width: 100px;
+    height: 200px;
+    background: url('../img/dogA.jpg');
+    background-position:-130px;
+  }
+  #myPic3{
+    width: 100px;
+    height: 200px;
+    background: url('../img/dogA.jpg');
+    background-position:-225px 300px;
+  }
+  #myPic4{
+    width: 100px;
+    height: 200px;
+    background: url('../img/dogA.jpg');
+    background-position:-330px;
+  }
+  #myPic5{
+    width: 100px;
+    height: 200px;
+    background: url('../img/dogA.jpg');
+    background-position:-440px;
+  }
+  #myPic6{
+    width: 100px;
+    height: 200px;
+    background: url('../img/dogA.jpg');
+    background-position:400px;
+  }
+ 

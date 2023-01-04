@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 auto;
+            border: 2px solid green;
+            border-radius: 10px;
+            width: 200px;
+            height: 200px;
+            padding: 30px;
+            text-align: center;
+
+        }
+
+        .shape-ex11 {
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            line-height: 40px;
+            color: #000;
+            background-color: transparent;
+            position: relative;
+            transition: all .3s linear;
+        }
+
+        .shape-ex11>p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .shape-ex11::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            display: block;
+            box-sizing: border-box;
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all .3s linear;
+        }
+
+        .shape-ex11::after {
+            content: "";
+            width: 20px;
+            height: 20px;
+            display: block;
+            box-sizing: border-box;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            transition: all .3s ease;
+        }
+
+        .shape-ex11:hover::before,
+        .shape-ex11:hover::after {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="./a20230104_1.php" method="get" id="myForm">
+            <p>
+                <label for="name">name</label>
+                <input type="text" name="name" id="name">
+            </p>
+            <p>
+                <label for="mobile">mobile</label>
+                <input type="text" name="mobile" id="mobile">
+            </p>
+            <div class="shape-ex11">
+                <p>
+                    <input type="submit" value="submit">
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
+        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(function () {
+
+            //把form丟進來
+            const myForm = $('#myForm');
+            //jq
+            myForm.submit(function (event) {
+                console.log('event', event);
+                //preventDefault() 不要讓submit送出；只能用在submit
+                event.preventDefault();
+                //serialize() 要送出需先序列化 
+                console.log('this', this);
+                var values = $(this).serialize();
+                console.log('values', values);
+
+
+                // ajax start
+                $.ajax({
+                    url: "./a20230104_1.php",
+                    type: "get",
+                    data: values,
+                    dataType:'json',
+                    success: function (response) {
+                        console.log('response', response);
+                        
+                        // You will get response from your PHP page (what you echo or print)
+                    },
+                    // error: function (jqXHR, textStatus, errorThrown) {
+                    //     console.log(textStatus, errorThrown);
+                    // }
+                });
+                // ajax stop
+            });
+
+
+        });
+
+
+
+
+
+    </script>
+</body>
+
+</html>
