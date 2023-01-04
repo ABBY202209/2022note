@@ -74,68 +74,26 @@
 </head>
 
 <body>
-    <div>
-        <form action="./a20230104_1.php" method="get" id="myForm">
-            <p>
-                <label for="name">name</label>
-                <input type="text" name="name" id="name">
-            </p>
-            <p>
-                <label for="mobile">mobile</label>
-                <input type="text" name="mobile" id="mobile">
-            </p>
-            <div class="shape-ex11">
-                <p>
-                    <input type="submit" value="submit">
-                </p>
-            </div>
-        </form>
+    <!-- json 輕量級資料交換格式 類似object -->
+    <div >
+        <button type="button" id="myBtn">myBtn</button>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
         integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(function () {
-
-            //把form丟進來
-            const myForm = $('#myForm');
-            //jq
-            myForm.submit(function (event) {
-                console.log('event', event);
-                //preventDefault() 不要讓submit送出；只能用在submit
-                event.preventDefault();
-                //serialize() 要送出需先序列化 
-                console.log('this', this);
-                var values = $(this).serialize();
-                console.log('values', values);
-
-
-                // ajax start
-                $.ajax({
-                    url: "./a20230104_1.php",
-                    type: "get",
-                    data: values,
-                    dataType:'json',//代到json的話，php記得用json_encode
-                    success: function (response) {
-                        console.log('response', response);
-                        
-                        // You will get response from your PHP page (what you echo or print)
-                    },
-                    // error: function (jqXHR, textStatus, errorThrown) {
-                    //     console.log(textStatus, errorThrown);
-                    // }
-                });
-                // ajax stop
-            });
-
-
+            const myBtn = $('#myBtn');
+            myBtn.click(function () {
+                $.getJSON("./js/myJson.json",
+                    function (data, textStatus, jqXHR) {
+                        console.log(data);
+                        console.log('data.firstName', data.firstName);
+                        console.log('data.lastName', data.lastName);
+                    }
+                );
+            })
         });
-
-
-
-
-
     </script>
 </body>
 
