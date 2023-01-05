@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>datatable</title>
+    <!-- datatable CCS -->
+    <!-- datatable 是 jQuery Javascript 庫的插件。它是一種高度靈活的工具(分頁、搜尋、排序…等功能) -->
+    <!-- 官網 https://datatables.net/manual/installation -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+</head>
+<body>
+<!-- ajax get data datatable getJson -->
+    <!-- datatable 適合用在資料不多的情況 -->
+    <!-- 如果資料多筆 建議自己寫 select db / pagination分頁-->
+    <!-- SELECT * FROM table 實際工作少用 當資料多幾萬筆 幾十萬筆時 會很慢 會當掉 -->
+    <table id="example" class="display" style="width:100%">
+        <!-- tr欄位要對稱 -->
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>電話</th>
+                <th>店名</th>
+                <th>特色</th>
+                <th>地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011-04-25</td>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>id</th>
+                <th>電話</th>
+                <th>店名</th>
+                <th>特色</th>
+                <th>地址</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- jq -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+            // 綁定
+            const myBtn = $('#myBtn');
+            const tbody = $('tbody');
+            // 將json的欄位名稱複製過來，方便確認
+            // tel
+            // features
+            // title
+            // address
+
+            // let textContent = '';
+
+            $.getJSON("./js/factory.json",
+                function (res, textStatus, jqXHR) {
+                    console.log('res', res);
+                    let textContent = "";//tbody.append()放外面的話，也要在外面宣告變數
+                    $.each(res, function (key, value) {
+                        //
+                        textContent += `
+                        <tr>
+                            <td>${key + 1}</td>
+                            <td>${value.tel}</td>
+                            <td>${value.features}</td>
+                            <td>${value.title}</td>
+                            <td>${value.address}</td>
+                        </tr>
+                        `;
+                    });
+                    // 將tbody.append()放在外面，可減少效能
+                    tbody.append(textContent);
+                    //一開始不跑：datatable 要放在ecch外面，載入後才跑
+                    $('#example').DataTable();
+
+
+
+                }
+            );
+        });
+
+    </script>
+</body>
+</html>

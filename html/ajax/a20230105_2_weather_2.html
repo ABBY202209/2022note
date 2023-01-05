@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+    <table id="example" class="display" style="width:100%">
+        <!-- tr欄位要對稱 -->
+        <!-- 抓出三段時間放在table內：時間1、2、3 -->
+        
+        <!-- 查看api文件檔 -->
+        <!-- 0 night -->
+        <!-- 6 day -->
+        <!-- 12 day -->
+        <!-- 18 night -->
+        <thead>
+            <tr>
+                <th>no.</th>
+                <th>縣市</th>
+                <th>時間1</th>
+                <th>時間2</th>
+                <th>時間3</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+               <th>no.</th>
+                <th>縣市</th>
+                <th>時間1</th>
+                <th>時間2</th>
+                <th>時間3</th>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>no.</th>
+                <th>縣市</th>
+                <th>時間1</th>
+                <th>時間2</th>
+                <th>時間3</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <!--  -->
+    <script>
+        $(function () {
+            // 綁定
+            // const myBtn = $('#myBtn');
+            const tbody = $('tbody');
+
+            //ajax
+            $.ajax({
+                url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-C0ECFB19-DA53-46EF-BC76-146F83535780",
+                type: "get",
+                dataType: 'json',
+                success: function (res) {
+                    console.log('res', res);
+                    console.log('res.records', res.records);//array(22)->each
+                    console.log('res.records.location', res.records.location);//array(22)->each
+                    console.log('res.records.location', res.records.location);//array(22)->each
+                    let data =res.records.location;
+                    console.log('data', data);
+                    //key locationName
+
+                    let contentText = "";
+                    
+                    // 抓時間
+                    // data[0]
+                    // weatherElement[2]minT
+                    // time[0] 時間1 
+                    // time[1] 時間2 
+                    // time[2] 時間3
+                    //查看原本的時間格式
+                    console.log('data[0].weatherElement[2].time[0].startTime', data[0].weatherElement[2].time[0].startTime);
+                    console.log('data[0].weatherElement[2].time[1].startTime', data[0].weatherElement[2].time[1].startTime);
+                    console.log('data[0].weatherElement[2].time[2].startTime', data[0].weatherElement[2].time[2].startTime);
+                    //轉換 const new Date
+                    const time0 = new Date(data[0].weatherElement[2].time[0].startTime);
+                    const time1 = new Date(data[0].weatherElement[2].time[1].startTime);
+                    const time2 = new Date(data[0].weatherElement[2].time[2].startTime);
+                    //查看現在的時間格式
+                    console.log('time0', time0);
+                    console.log('time1', time1);
+                    console.log('time2', time2);
+
+                    //把字串轉成時分秒
+                    //getMonth 0-11 所以使用上要主動加1 javascript
+                    const timeText0 = `${time0.getFullYear()} / ${time0.getMonth()+1} / ${time0.getDate()} / ${time0.getHours()}`;
+                    const timeText1 = `${time1.getFullYear()} / ${time1.getMonth()+1} / ${time1.getDate()} / ${time1.getHours()}`;
+                    const timeText2 = `${time2.getFullYear()} / ${time2.getMonth()+1} / ${time2.getDate()} / ${time2.getHours()}`;
+                    //查看
+                    onsole.log('timeText0',timeText0);
+                    console.log('timeText1',timeText1);
+                    console.log('timeText2',timeText2);
+                    //將起始時間資料放入table的表頭
+                    $('tr>th').eq(2).text(timeText0);
+                    $('tr>th').eq(3).text(timeText1);
+                    $('tr>th').eq(4).text(timeText2);
+
+                    //抓key value
+                    $.each(res.records.location, function (key, value) {
+                        contentText += `
+                            <tr>
+                            <td>${key + 1}</td>
+                            <td>${value.locationName}</td>
+                            <td>
+                                ${value.weatherElement[0].time[0].parameter.parameterName}
+                                ${value.weatherElement[2].time[0].parameter.parameterName}
+                                ${value.weatherElement[4].time[0].parameter.parameterName}
+                                &deg;C
+
+                            </td>
+                            <td>${value.locationName}</td>
+                            <td>${value.locationName}</td>
+                        </tr>
+                        `;
+
+                    });
+                    //將資料放進tbody
+                    tbody.append(contentText);
+                    //驅動
+                    $('#example').DataTable()
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // console.log('jqXHR', jqXHR);
+                    // console.log('textStatus', textStatus);
+                    // console.log('errorThrown', errorThrown);
+                }
+            });
+            //ajax end
+
+        });
+
+    </script>
+
+</body>
+
+</html>

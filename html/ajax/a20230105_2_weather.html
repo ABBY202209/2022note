@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+    <table id="example" class="display" style="width:100%">
+        <!-- tr欄位要對稱 -->
+        <thead>
+            <tr>
+                <th>no.</th>
+                <th>location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+               <th>no.</th>
+                <th>location</th>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>no.</th>
+                <th>location</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(function () {
+            // 綁定
+            // const myBtn = $('#myBtn');
+            const tbody = $('tbody');
+
+            //ajax
+            $.ajax({
+                url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=授權碼",
+                type: "get",
+                dataType: 'json',
+                success: function (res) {
+                    console.log('res', res);
+                    console.log('res.records', res.records);//array(22)->each
+                    console.log('res.records.location', res.records.location);//array(22)->each
+                    //key locationName
+
+                    let contentText = "";
+                    //抓key value
+                    $.each(res.records.location, function (key, value) {
+                        contentText += `
+                            <tr>
+                                <th>${key + 1}</th>
+                                <th>${value.locationName}</th>
+                            </tr>
+                            `;
+
+                    });
+                    //將資料放進tbody
+                    tbody.append(contentText);
+                    //驅動
+                    $('#example').DataTable()
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // console.log('jqXHR', jqXHR);
+                    // console.log('textStatus', textStatus);
+                    // console.log('errorThrown', errorThrown);
+                }
+            });
+            //ajax end
+
+        });
+
+    </script>
+
+</body>
+
+</html>
