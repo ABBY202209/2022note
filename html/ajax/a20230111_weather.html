@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+    <table id="example" class="display" style="width:100%">
+        <!-- tr欄位要對稱 -->
+        <thead>
+            <tr>
+                <th>no.</th>
+                <th>location</th>
+                <th>min</th>
+                <th>max</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+               <th>no.</th>
+                <th>location</th>
+            </tr> -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>no.</th>
+                <th>location</th>
+                <th>min</th>
+                <th>max</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button id="myBtn" >print</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(function () {
+            // 綁定
+            // const myBtn = $('#myBtn');
+            const tbody = $('tbody');
+            const myBtn = $('#myBtn');
+            myBtn.click(function () {
+                window.print();
+            })
+
+
+            //ajax
+            $.ajax({
+                url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-92B32208-4F19-4A49-BB7B-E5E62870CFA0",
+                type: "get",
+                dataType: 'json',
+                success: function (res) {
+                    console.log('res', res);
+
+                    let data=res.records.location;
+                    console.log('res.records', res.records);//array(22)->each
+                    console.log('data', data);//array(22)->each
+                    //抓嘉義
+                    console.log('data[0]', data[0].weatherElement);
+                    //抓連江的最低溫
+                    console.log('data[19]', data[19].weatherElement[2].time[0].parameter.parameterName);
+                    
+                    
+                    // 練習四 每個縣市 第一組 startTime 最低溫度 最高溫度
+                    let contentText = "";
+                    //抓key value
+                    $.each(data, function (key, value) {
+                        let min=value.weatherElement[2].time[0].parameter.parameterName;
+                        let max=value.weatherElement[4].time[0].parameter.parameterName;
+                        console.log('min',min);
+                        contentText += `
+                            <tr>
+                                <th>${key + 1}</th>
+                                <th>${value.locationName}</th>
+                                <th>${min}</th>
+                                <th>${max}</th>
+                            </tr>
+                            `;
+
+                    });
+                    //將資料放進tbody
+                    tbody.append(contentText);
+                    //驅動
+                    $('#example').DataTable()
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    // console.log('jqXHR', jqXHR);
+                    // console.log('textStatus', textStatus);
+                    // console.log('errorThrown', errorThrown);
+                }
+            });
+            //ajax end
+
+        });
+
+    </script>
+
+</body>
+
+</html>

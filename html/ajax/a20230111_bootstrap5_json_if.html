@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>json</title>
+</head>
+
+<body>
+
+    <table class="table ">
+        <h2>勞工保險基金社會責任投資（SRI）比例
+        </h2>
+        <p>
+            統計勞工保險基金投資於社會責任相關評選優良企業金額占國內股票部位比例   
+            <button type="button" class="btn btn-outline-info btn-sm" id="myBtn">print</button>
+        </p>
+        
+        <thead class="table-success text-center">
+            <tr>
+                <th>no.</th>
+                <th>日期</th>
+                <th>勞工保險基金社會責任投資（SRI）比例</th>
+
+            </tr>
+        </thead>
+        <tbody class="text-center">
+
+        </tbody>
+    </table>
+
+    
+    <!-- jq -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+            // 綁定
+            const tbody = $('tbody');
+            const myBtn = $('#myBtn');
+            myBtn.click(function () {
+                window.print();
+            })
+            // 將json的欄位名稱複製過來，方便確認
+            // tel
+            // features
+            // title
+            // address
+
+            // let textContent = '';
+
+            $.getJSON("./js/ciw.json",
+                function (res, textStatus, jqXHR) {
+                    console.log('res', res);
+                    console.log('res', res);
+                    
+                    let textContent = "";//tbody.append()放外面的話，也要在外面宣告變數
+                    $.each(res, function (key, value) {
+                        //
+                        textContent += `
+                        <tr>
+                            <td>${key + 1}</td>
+                            <td>${value.date}</td>
+                            <td>${value.sri}</td>
+                        </tr>
+                        `;
+                    });
+                    // 將tbody.append()放在外面，可減少效能
+                    tbody.append(textContent);
+                    //一開始不跑：datatable 要放在ecch外面，載入後才跑
+                    $('#example').DataTable();
+
+
+
+                }
+            );
+        });
+
+    </script>
+</body>
+
+</html>
